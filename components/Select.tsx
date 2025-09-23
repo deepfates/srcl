@@ -10,14 +10,28 @@ interface SelectProps {
   placeholder?: string;
   defaultValue?: string;
   onChange?: (selectedValue: string) => void;
+  value?: string;
+  className?: string;
 }
 
-const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValue = '', onChange }) => {
+const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValue = '', onChange, value, className }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [index, setIndex] = React.useState(-1);
   const [selectedValue, setSelectedValue] = React.useState(defaultValue);
 
   const containerRef = React.useRef<HTMLButtonElement | null>(null);
+
+  React.useEffect(() => {
+    if (value !== undefined) {
+      setSelectedValue(value);
+    }
+  }, [value]);
+
+  React.useEffect(() => {
+    if (value === undefined) {
+      setSelectedValue(defaultValue);
+    }
+  }, [defaultValue, value]);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -42,7 +56,7 @@ const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValu
 
   return (
     <>
-      <section className={styles.select}>
+      <section className={Utilities.classNames(styles.select, className)}>
         <figure
           className={Utilities.classNames(isOpen ? styles.focused : null, styles.control)}
           onClick={() => {
@@ -52,7 +66,7 @@ const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValu
           ▼
         </figure>
         <button
-          className={styles.display}
+          className={Utilities.classNames(styles.display, className)}
           ref={containerRef}
           tabIndex={0}
           onClick={() => {

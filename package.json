@@ -7,12 +7,36 @@
   "license": "MIT",
   "version": "1.1.7",
   "type": "module",
+  "main": "./dist/srcl.cjs.js",
+  "module": "./dist/srcl.es.js",
+  "types": "./dist/types/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/src/index.d.ts",
+      "import": "./dist/srcl.es.js",
+      "require": "./dist/srcl.cjs.js"
+    },
+    "./global.scss": "./global.scss"
+  },
+  "files": [
+    "dist",
+    "global.scss",
+    "components",
+    "common",
+    "lib",
+    "modules",
+    "src/types"
+  ],
+  "sideEffects": ["**/*.scss"],
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "vite --port 10000",
     "dev:server": "tsx watch server/index.ts",
-    "build": "tsc && vite build",
+    "build": "npm run build:lib && npm run build:types",
+    "build:lib": "vite build --config vite.library.config.ts",
+    "build:types": "tsc -p tsconfig.build.json",
     "build:server": "tsc -p tsconfig.server.json",
+    "build:demo": "tsc && vite build",
     "start": "NODE_ENV=production node dist/server/index.js",
     "preview": "vite preview --port 10000",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
@@ -21,12 +45,14 @@
     "clsx": "^2.1.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "react-helmet-async": "^2.0.4",
     "react-router-dom": "^6.22.3",
     "sass": "1.89.0",
     "tailwind-merge": "^3.3.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -38,6 +64,8 @@
     "concurrently": "^8.2.2",
     "tsx": "^4.7.1",
     "typescript": "^5.9.2",
-    "vite": "^5.1.6"
+    "vite": "^5.1.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   }
 }
