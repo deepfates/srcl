@@ -2,14 +2,16 @@
 import styles from '@components/Row.module.scss';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 type RowProps = React.HTMLAttributes<HTMLElement> & {
   children?: React.ReactNode;
+  className?: string;
 };
 
-const Row = React.forwardRef<HTMLElement, RowProps>(({ children, ...rest }, ref) => {
+const Row = React.forwardRef<HTMLElement, RowProps>(({ children, className, ...rest }, ref) => {
   return (
-    <section className={styles.row} ref={ref} {...rest}>
+    <section className={Utilities.classNames(styles.row, className)} ref={ref} {...rest}>
       {children}
     </section>
   );
