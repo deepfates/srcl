@@ -60,7 +60,11 @@ const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValu
         <figure
           className={Utilities.classNames(isOpen ? styles.focused : null, styles.control)}
           onClick={() => {
-            isOpen ? handleClose() : handleOpen();
+            if (isOpen) {
+              handleClose();
+            } else {
+              handleOpen();
+            }
           }}
         >
           ▼
@@ -70,7 +74,11 @@ const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValu
           ref={containerRef}
           tabIndex={0}
           onClick={() => {
-            isOpen ? handleClose() : handleOpen();
+            if (isOpen) {
+              handleClose();
+            } else {
+              handleOpen();
+            }
           }}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
