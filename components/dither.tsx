@@ -94,7 +94,7 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
     renderCurrent();
   }, [loaded, renderCurrent]);
 
-  return <canvas ref={canvasRef} aria-label={alt} role="img" className={cn('max-w-full', className)} style={style} />;
+  return <canvas ref={canvasRef} aria-label={alt} role="img" className={className} style={style} />;
 };
 
 export default Dither;
