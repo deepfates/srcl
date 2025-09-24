@@ -1,5 +1,3 @@
-import '../global.scss';
-
 export { default as Accordion } from './Accordion';
 export { default as ActionBar } from './ActionBar';
 export { default as ActionButton } from './ActionButton';
@@ -93,4 +91,3 @@ export { default as UpdatingDataTable } from './examples/UpdatingDataTable';
 export { default as IntDevLogo } from './svg/IntDevLogo';
 export { default as Sphere } from './svg/Sphere';
 
-export * from '../lib';

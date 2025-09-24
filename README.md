@@ -35,6 +35,20 @@ export default function Example() {
 
 All components are exported as named exports. Utility helpers (such as `cn`, `useThemeTwoColor`, and halftone helpers) are available from the same entry point. Global styles are bundled into `style.css`; importing it once at the root of your application will apply the terminal theming variables expected by the components.
 
+### Hotkey helpers
+
+Keyboard shortcuts are available via the bundled hotkeys utilities. Wrap your app in the provider and register handlers with the included hooks:
+
+```tsx
+import { HotkeysProvider, useHotkeys } from 'srcl';
+
+export default function Demo() {
+  useHotkeys('meta+k', () => console.log('Launch command palette'));
+
+  return <HotkeysProvider>{/* your app */}</HotkeysProvider>;
+}
+```
+
 ## Local development
 
 ```sh
