@@ -16,7 +16,7 @@ Examples:
 - import Badge from 'srcl/components/Badge'
 
 Global styles:
-- Import once in your app entry: `import 'srcl/global.css'`
+- Import once in your app entry: `import 'srcl/global.css'` (build output with fonts baked in)
 - If you prefer to compile SCSS yourself, `import 'srcl/global.scss'` (subpath export) and ensure your build has a Sass pipeline.
 
 Notes:

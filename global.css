@@ -4,11 +4,10 @@
   This is a thin convenience wrapper so consumers can import:
     import 'srcl/global.css'
 
-  It forwards to the SCSS source. Your bundler must support handling SCSS
-  when imported from CSS (Vite and many modern setups do this via PostCSS/Sass).
-  If your setup does not process SCSS through CSS @import, import the SCSS
-  directly instead:
+  It forwards to the built CSS emitted by the library build so consumers can
+  leverage the preprocessed font URLs and avoid bundler-specific Sass setup.
+  If you want to customize tokens via Sass, import the SCSS source instead:
     import 'srcl/global.scss'
 */
 
-@import './global.scss';
+@import './dist/src/global.css';
