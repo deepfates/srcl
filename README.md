@@ -16,14 +16,15 @@ Examples:
 - import Badge from 'srcl/components/Badge'
 
 Global styles:
-- If available, import once in your app entry: import 'srcl/global.css'
-- Alternatively (if your setup supports SCSS), import: import '@root/global.scss'
+- Import once in your app entry: `import 'srcl/global.css'`
+- If you prefer to compile SCSS yourself, `import 'srcl/global.scss'` (subpath export) and ensure your build has a Sass pipeline.
 
 Notes:
 - Tree-shaking: Subpath imports ensure you only bundle what you use.
 - Types: TypeScript declaration files are provided for components and common utilities; editors should auto-complete props.
 - Peer dependencies: React and React DOM are expected to be provided by the consuming app.
-- Styles: Components use SCSS modules. Most Vite-based projects work out of the box. If your build fails to resolve SCSS, install a Sass pipeline (e.g., add the sass package).
+- Styles: Components use SCSS modules. Most Vite-based projects work out of the box. If your build fails to resolve SCSS, install a Sass pipeline (e.g., add the `sass` package).
+- Fonts: The library build copies every font referenced in `global.scss` into `dist/assets/fonts` and rewrites component CSS to import the emitted assets automatically.
 
 Troubleshooting:
 - If your bundler cannot resolve imports like 'srcl/components/Button', ensure that your installed SRCL version exposes subpath exports and your bundler supports them (Node resolution with "exports" field).
