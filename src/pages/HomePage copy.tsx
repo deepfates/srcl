@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import '@root/global.scss';
 
 import * as Constants from '@common/constants';
@@ -11,11 +12,13 @@ import ActionBar from '@components/ActionBar';
 import ActionButton from '@components/ActionButton';
 import ActionListItem from '@components/ActionListItem';
 import AlertBanner from '@components/AlertBanner';
+import AS400 from '@components/examples/AS400';
 import Avatar from '@components/Avatar';
 import Badge from '@components/Badge';
 import BarLoader from '@components/BarLoader';
 import HalftoneImage from '@components/examples/HalftoneImage';
 import BarProgress from '@components/BarProgress';
+import Block from '@components/Block';
 import BlockLoader from '@components/BlockLoader';
 import Breadcrumbs from '@components/BreadCrumbs';
 import Button from '@components/Button';
@@ -29,9 +32,11 @@ import ContentFluid from '@components/ContentFluid';
 import ComboBox from '@components/ComboBox';
 import DataTable from '@components/DataTable';
 import DatePicker from '@components/DatePicker';
+import DashboardRadar from '@components/examples/DashboardRadar';
 import DebugGrid from '@components/DebugGrid';
 import DefaultActionBar from '@components/page/DefaultActionBar';
 import DefaultLayout from '@components/page/DefaultLayout';
+import Denabase from '@components/examples/Denabase';
 import Dialog from '@components/Dialog';
 import Divider from '@components/Divider';
 import Drawer from '@components/Drawer';
@@ -40,13 +45,18 @@ import Grid from '@components/Grid';
 import HoverComponentTrigger from '@components/HoverComponentTrigger';
 import Indent from '@components/Indent';
 import Input from '@components/Input';
+import IntDevLogo from '@components/svg/IntDevLogo';
 import ListItem from '@components/ListItem';
 import Message from '@components/Message';
 import MessageViewer from '@components/MessageViewer';
 import MessagesInterface from '@components/examples/MessagesInterface';
 import ModalAlert from '@components/modals/ModalAlert';
+import ModalCanvasSnake from '@components/modals/ModalCanvasSnake';
+import ModalCanvasPlatformer from '@components/modals/ModalCanvasPlatformer';
+import ModalChess from '@components/modals/ModalChess';
 import ModalCreateAccount from '@components/modals/ModalCreateAccount';
 import ModalError from '@components/modals/ModalError';
+import ModalMatrixModes from '@components/modals/ModalMatrixModes';
 import ModalStack from '@components/ModalStack';
 import ModalTrigger from '@components/ModalTrigger';
 import Navigation from '@components/Navigation';
@@ -60,9 +70,13 @@ import SidebarLayout from '@components/SidebarLayout';
 import Table from '@components/Table';
 import TableRow from '@components/TableRow';
 import TableColumn from '@components/TableColumn';
+import Text from '@components/Text';
 import TextArea from '@components/TextArea';
 import TreeView from '@components/TreeView';
 import UpdatingDataTable from '@components/examples/UpdatingDataTable';
+import ModalDOMSnake from '@root/components/modals/ModalDOMSnake';
+
+
 
 // NOTE(jimmylee)
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata
@@ -170,6 +184,14 @@ export default function HomePage(props) {
           <Card title="EXAMPLE">
             <AlertBanner>When things reach the extreme, they alternate to the opposite.</AlertBanner>
           </Card>
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="APPLICATION SYSTEM/400 EXAMPLE">
+          The Application System 400 (AS/400) is a line of servers and network adapters from IBM that was designed to help businesses manage their data, applications, and systems infrastructure. This usage example is a tribute to the interfaces those servers had.
+          <br />
+          <br />
+          <AS400 />
           <br />
         </Accordion>
 
@@ -346,8 +368,22 @@ export default function HomePage(props) {
             <br />
             <br />
             <br />
-            I believe that we have in us a residue of a world-picture which is essentially mechanical in nature – what we might call the mechanist-rationalist world picture ... Like an infection it has entered us, it affects our actions, it affects our morals, it affects our sense of beauty...
+            I believe that we have in us a residue of a world-picture which is essentially mechanical in nature – what we might call the mechanist-rationalist world picture ... Like an infection it has entered us, it affects our actions, it affects our morals, it affects our sense of beauty.
             <br />
+            <br />
+            This is a picture of a world made of atoms which whirl around in a mechanical fashion: a world in which it is assumed that all the universe is a blind mechanism, whirling on its way, under the impact of the ‘laws of nature.’ These laws are, essentially, those mechanistic laws which explain how the atoms and the structures made of these atoms proceed on their way ... Even though we would admit that the precise laws and mechanisms may not be known, we assume that underlying our ignorance there are some laws, not quite formulated, which do account for how things work ...
+            <br />
+            <br />
+            I have reached the conclusion that the strange fantasies, the private in-house language about architecture, the strange nature of 20th-century gallery art, deconstructionism, postmodernism, modernism and a host of other ‘isms’, all of which affect our physical world hugely, are created because of an entanglement between the nature of architecture, the practice of architecture, and the mechanical conception of the universe.
+            <br />
+            <br />
+            More precisely, I believe that the mistake and confusion in our picture of the the art of building has come from our conception of what matter is.
+            <br />
+            <br />
+            The present conception of matter, and the opposing one which I shall try to put in its place, may both be summarized by the nature of order. Our idea of matter is essentially governed by our idea of order ... So it is the nature of order which lies at the root of the problem of architecture ...
+            <br />
+            <br />
+            When we understand what order is, I believe we shall better understand what matter is and then what the universe itself is.
           </CardDouble>
           <br />
         </Accordion>
@@ -504,6 +540,40 @@ export default function HomePage(props) {
           <br />
         </Accordion>
 
+        <Accordion defaultValue={true} title="CHESSBOARD">
+          A minimal 8×8 component that maps alphanumeric piece identifiers to Unicode chess symbols, uses alternating squares, and includes labeled rows and columns. Simply provide an 8×8 array of piece codes or empty strings for blank squares. Perfect for rendering classic chess scenes.
+          <br />
+          <br />
+          <Card title="DEFAULT">
+            <Chessboard board={Constants.CHESSBOARD_DEFAULT_POSITIONS} />
+          </Card>
+          <br />
+          <Accordion defaultValue={true} title="BAD BISHOP">
+            The “Bad Bishop” describes a bishop locked on squares of its own color by its own pawns, stifling its mobility. In this example from chess.com, Black’s bishop on B-7 is hindered by its own pawns and cannot be freed easily. Coincidentally, Bad Bishop is also one of the best Seattle bars (704 1st Ave), it is known for its creative cocktails and lively atmosphere.
+            <br />
+            <br />
+            <Card title="BAD BISHOP">
+              <Chessboard board={Constants.CHESSBOARD_BAD_BISHOP} />
+            </Card>
+            <br />
+          </Accordion>
+          <Accordion defaultValue={true} title="CHECKMATE">
+            In chess, the en passant rule allows a pawn to capture an enemy pawn that has just made a two-square advance, moving to the square it bypassed as if it had only advanced one square. This unique rule prevents a pawn from escaping capture by skipping past an opponent. In the scenario below, White uses en passant to deliver checkmate, leaving Black’s king with no legal moves.
+            <br />
+            <br />
+            <Card title="EN PASSANT">
+              <Row style={{ whiteSpace: 'nowrap' }}>
+                <Chessboard board={Constants.CHESSBOARD_CHECKMATE_STEP_ONE} />
+                &nbsp;
+                <Chessboard board={Constants.CHESSBOARD_CHECKMATE_STEP_TWO} />
+                &nbsp;
+                <Chessboard board={Constants.CHESSBOARD_CHECKMATE_STEP_THREE} />
+              </Row>
+            </Card>
+          </Accordion>
+          <br />
+        </Accordion>
+
         <Accordion defaultValue={true} title="CODE BLOCKS">
           Code blocks display code examples clearly and concisely, making them easy to read, copy, and use. This version has line numbers that are not user selectable.
           <br />
@@ -583,6 +653,28 @@ int main() {
             <br />
             <DatePicker year={2024} month={12} />
           </Card>
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="DASHBOARD RADAR EXAMPLE">
+          The Dashboard Radar Example is a visual homage to Brian Wyvill, the creator of the iconic Nostromo interface in Alien 1979. This example using SRCL components recreates the orbital simulations that brought a sense of realism to the movie’s early scenes.
+          <br />
+          <br /> The original AOS (Alien Orbit Simulator) was inspired by the moment when the Nostromo’s crew awakens to decipher a distress signal, this adapation depicts the kind of graphical representation that could chart complex trajectories around distant planets.
+          <br />
+          <br />
+          <Card>
+            <Row style={{ whiteSpace: 'nowrap', minWidth: '70ch' }}>
+              <DashboardRadar />
+            </Row>
+          </Card>
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="DENABASE EXAMPLE">
+          The Denabase component is a tribute to the work of Territory Studio in the movie Blade Runner 2049. It draws inspiration from a DNA database containing an archive of individual DNA cards. They explored various card systems to capture a sense of physicality.
+          <br />
+          <br />
+          <Denabase />
           <br />
         </Accordion>
 
@@ -944,6 +1036,62 @@ int main() {
           <br />
           <br />
           <Card title="EXAMPLE">
+            <ModalTrigger
+              modal={ModalCanvasSnake}
+              modalProps={{
+                buttonText: 'GAME OVER',
+              }}
+            >
+              <ActionButton>Render Canvas Snake</ActionButton>
+            </ModalTrigger>
+
+            <ModalTrigger
+              modal={ModalDOMSnake}
+              modalProps={{
+                buttonText: 'GAME OVER',
+              }}
+            >
+              <ActionButton>Render DOM Snake</ActionButton>
+            </ModalTrigger>
+
+            <ModalTrigger
+              modal={ModalCanvasPlatformer}
+              modalProps={{
+                buttonText: 'GAME OVER',
+              }}
+            >
+              <ActionButton>Render Canvas Platformer</ActionButton>
+            </ModalTrigger>
+
+            <ModalTrigger
+              modal={ModalMatrixModes}
+              modalProps={{
+                buttonText: 'CLOSE',
+              }}
+            >
+              <ActionButton>Render Modal Matrix Modes</ActionButton>
+            </ModalTrigger>
+
+            <ModalTrigger
+              modal={ModalChess}
+              modalProps={{
+                board: [
+                  ['r', '', '', 'q', '', 'b', '', 'r'],
+                  ['p', 'p', 'p', 'b', 'k', ' ', ' ', 'p'],
+                  ['', '', '', 'p', '', '', 'B', ''],
+                  ['', '', '', 'P', 'p', '', 'B', ''],
+                  ['', '', 'P', '', '', '', '', ''],
+                  ['', '', '', '', '', '', '', 'P'],
+                  ['P', 'P', ' ', ' ', ' ', 'P', 'P', ''],
+                  ['R', ' ', ' ', ' ', 'K', '', '', 'R'],
+                ],
+                buttonText: 'CONCEDE',
+                title: `CHECKMATE`,
+              }}
+            >
+              <ActionButton>Render Modal Checkmate</ActionButton>
+            </ModalTrigger>
+
             <ModalTrigger
               modal={ModalAlert}
               modalProps={{

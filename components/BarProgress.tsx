@@ -1,4 +1,3 @@
-
 import styles from '@components/BarProgress.module.scss';
 
 import * as React from 'react';
@@ -16,6 +15,8 @@ const BarProgress: React.FC<BarProgressProps> = ({ intervalRate, progress, fillC
 
   const containerRef = React.useRef<HTMLDivElement>(null);
   const measureRef = React.useRef<HTMLSpanElement>(null);
+  const lastWidthRef = React.useRef(0);
+  const debounceTimerRef = React.useRef<number | null>(null);
 
   React.useEffect(() => {
     if (typeof progress === 'number') {
@@ -30,30 +31,77 @@ const BarProgress: React.FC<BarProgressProps> = ({ intervalRate, progress, fillC
   }, [intervalRate, progress]);
 
   React.useLayoutEffect(() => {
-    if (!measureRef.current) return;
-    const rect = measureRef.current.getBoundingClientRect();
-    if (rect.width > 0) {
-      setCharWidth(rect.width);
-    } else {
-      requestAnimationFrame(() => {
-        const retryRect = measureRef.current?.getBoundingClientRect();
-        if (retryRect && retryRect.width > 0) {
-          setCharWidth(retryRect.width);
-        }
+    const el = measureRef.current;
+    if (!el) return;
+
+    let cancelled = false;
+
+    const tryMeasure = () => {
+      if (!measureRef.current) return;
+      const rect = measureRef.current.getBoundingClientRect();
+      if (rect.width > 0) {
+        setCharWidth((prev) => (Math.abs(prev - rect.width) > 0.25 ? rect.width : prev));
+      } else {
+        requestAnimationFrame(() => {
+          const retryRect = measureRef.current?.getBoundingClientRect();
+          if (retryRect && retryRect.width > 0) {
+            setCharWidth((prev) => (Math.abs(prev - retryRect.width) > 0.25 ? retryRect.width : prev));
+          }
+        });
+      }
+    };
+
+    // Initial measurement, with rAF retry
+    tryMeasure();
+
+    // Re-measure when fonts are ready (prevents layout jump flicker)
+    const fonts: any = (document as any).fonts;
+    if (fonts && typeof fonts.ready?.then === 'function') {
+      fonts.ready.then(() => {
+        if (cancelled) return;
+        tryMeasure();
       });
     }
+
+    return () => {
+      cancelled = true;
+    };
   }, [fillChar]);
 
   React.useEffect(() => {
-    if (!containerRef.current) return;
-    const observer = new ResizeObserver((entries) => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const onResize = (entries: ResizeObserverEntry[]) => {
       for (const entry of entries) {
         const { width } = entry.contentRect;
-        setContainerWidth(width);
+
+        // Ignore no-op changes to prevent thrash
+        if (Math.abs(width - lastWidthRef.current) < 0.5) {
+          continue;
+        }
+
+        // Debounce width updates to reduce re-render flicker
+        if (debounceTimerRef.current !== null) {
+          window.clearTimeout(debounceTimerRef.current);
+        }
+        debounceTimerRef.current = window.setTimeout(() => {
+          lastWidthRef.current = width;
+          setContainerWidth(width);
+        }, 50);
       }
-    });
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
+    };
+
+    const observer = new ResizeObserver(onResize);
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+      if (debounceTimerRef.current !== null) {
+        window.clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
+      }
+    };
   }, []);
 
   const cappedProgress = Math.min(currentProgress, 100);

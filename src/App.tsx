@@ -5,6 +5,7 @@ import Layout from './Layout';
 import HomePage from './pages/HomePage';
 import ConceptOnePage from './pages/ConceptOnePage';
 import ConceptTwoPage from './pages/ConceptTwoPage';
+import PatternLanguagePage from './pages/PatternLanguagePage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="concept-1" element={<ConceptOnePage />} />
             <Route path="concept-2" element={<ConceptTwoPage />} />
+            <Route path="patterns" element={<PatternLanguagePage />} />
           </Route>
         </Routes>
       </Providers>
