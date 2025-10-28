@@ -38,10 +38,11 @@
     "concurrently": "^8.2.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "sass-embedded": "^1.93.2",
     "tsc-alias": "^1.8.10",
     "tsx": "^4.7.1",
     "typescript": "^5.9.2",
-    "vite": "^5.1.6"
+    "vite": "^6.4.1"
   },
   "peerDependencies": {
     "react": "^18 || ^19",

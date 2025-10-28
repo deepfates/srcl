@@ -31,15 +31,8 @@ async function injectCssImports(outputDir: string) {
         continue;
       }
 
-      const relativeModulePath = path
-        .relative(modulesDir, entryPath)
-        .replace(/\\/g, '/');
-      const cssFilePath = path.join(
-        outputDir,
-        'assets',
-        'components',
-        relativeModulePath.replace('.module.scss.js', '.css'),
-      );
+      const relativeModulePath = path.relative(modulesDir, entryPath).replace(/\\/g, '/');
+      const cssFilePath = path.join(outputDir, 'assets', 'components', relativeModulePath.replace('.module.scss.js', '.css'));
 
       try {
         await fs.access(cssFilePath);
@@ -47,9 +40,7 @@ async function injectCssImports(outputDir: string) {
         continue;
       }
 
-      const relativeImport = path
-        .relative(path.dirname(entryPath), cssFilePath)
-        .replace(/\\/g, '/');
+      const relativeImport = path.relative(path.dirname(entryPath), cssFilePath).replace(/\\/g, '/');
 
       let code = await fs.readFile(entryPath, 'utf8');
       if (!code.includes(`"${relativeImport}"`) && !code.includes(`'${relativeImport}'`)) {
@@ -127,6 +118,18 @@ export default defineConfig({
       '@modules': path.resolve(__dirname, './modules'),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+        silenceDeprecations: ['legacy-js-api'],
+      },
+      sass: {
+        api: 'modern-compiler',
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
+  },
   build: {
     outDir: 'dist',
     sourcemap: true,
@@ -139,10 +142,7 @@ export default defineConfig({
       entry: {
         index: path.resolve(__dirname, 'src/index.ts'),
         global: path.resolve(__dirname, 'src/global.ts'),
-        'modules/hotkeys/index': path.resolve(
-          __dirname,
-          'modules/hotkeys/index.ts',
-        ),
+        'modules/hotkeys/index': path.resolve(__dirname, 'modules/hotkeys/index.ts'),
       },
       // Only ESM for optimal tree-shaking in consumers
       formats: ['es'],

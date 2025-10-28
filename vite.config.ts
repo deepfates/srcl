@@ -28,6 +28,21 @@ export default defineConfig({
       },
     },
   },
+  // Configure Sass to use the modern JS API and prefer the embedded compiler for performance.
+  // Vite will automatically use 'sass-embedded' if it's installed. Run: npm i -D sass-embedded
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Use Dart Sass modern compiler API to avoid deprecation warnings and prep for Sass 2.0
+        api: 'modern-compiler',
+        silenceDeprecations: ['legacy-js-api'],
+      },
+      sass: {
+        api: 'modern-compiler',
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
+  },
   build: {
     outDir: 'dist',
     sourcemap: true,
