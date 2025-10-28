@@ -84,14 +84,8 @@ export default function HomePage(props) {
       <DefaultActionBar />
 
       <Grid>
-        <ActionListItem icon={`⭢`} href="https://internet.dev" target="_blank">
-          Hire our studio to build your applications
-        </ActionListItem>
-        <ActionListItem icon={`⭢`} href="https://github.com/internet-development/www-sacred" target="_blank">
+        <ActionListItem icon={`⭢`} href="https://github.com/deepfates/srcl" target="_blank">
           View the SRCL source code
-        </ActionListItem>
-        <ActionListItem icon={`⭢`} href="https://vercel.com/home" target="_blank">
-          Try our hosting provider Vercel
         </ActionListItem>
       </Grid>
       <Grid>
@@ -156,9 +150,6 @@ export default function HomePage(props) {
               Return item example
             </ActionListItem>
             <ActionListItem icon={`⊹`}>Action item example</ActionListItem>
-            <ActionListItem icon={`⊹`} href="https://internet.dev" target="_blank">
-              Visit the studio website
-            </ActionListItem>
           </Card>
           <br />
         </Accordion>
@@ -1444,14 +1435,8 @@ int main() {
       </Grid>
 
       <Grid>
-        <ActionListItem icon={`⭢`} href="https://internet.dev" target="_blank">
-          Hire our studio to build your applications
-        </ActionListItem>
-        <ActionListItem icon={`⭢`} href="https://github.com/internet-development/www-sacred" target="_blank">
+        <ActionListItem icon={`⭢`} href="https://github.com/deepfates/srcl" target="_blank">
           View the SRCL source code
-        </ActionListItem>
-        <ActionListItem icon={`⭢`} href="https://vercel.com/home" target="_blank">
-          Try our hosting provider Vercel
         </ActionListItem>
       </Grid>
       <ModalStack />
