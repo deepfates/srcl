@@ -1,5 +1,5 @@
 
-import styles from '@components/DatePicker.module.scss';
+import styles from '@components/DatePicker.module.css';
 
 import * as React from 'react';
 

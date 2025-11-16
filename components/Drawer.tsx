@@ -1,5 +1,5 @@
 
-import styles from '@components/Drawer.module.scss';
+import styles from '@components/Drawer.module.css';
 
 import * as React from 'react';
 

@@ -1,5 +1,5 @@
 
-import styles from '@components/NumberRangeSlider.module.scss';
+import styles from '@components/NumberRangeSlider.module.css';
 
 import * as React from 'react';
 

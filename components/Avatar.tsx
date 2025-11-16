@@ -1,5 +1,5 @@
 
-import styles from '@components/Avatar.module.scss';
+import styles from '@components/Avatar.module.css';
 import Dither from '@components/dither';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

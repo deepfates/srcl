@@ -1,4 +1,4 @@
-import styles from '@components/BarProgress.module.scss';
+import styles from '@components/BarProgress.module.css';
 
 import * as React from 'react';
 

@@ -1,5 +1,5 @@
 
-import styles from '@components/Navigation.module.scss';
+import styles from '@components/Navigation.module.css';
 
 import * as React from 'react';
 

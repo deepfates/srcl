@@ -1,5 +1,5 @@
 
-import styles from '@components/ComboBox.module.scss';
+import styles from '@components/ComboBox.module.css';
 
 import * as React from 'react';
 

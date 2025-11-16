@@ -1,5 +1,5 @@
 
-import styles from '@components/TableColumn.module.scss';
+import styles from '@components/TableColumn.module.css';
 
 import * as React from 'react';
 

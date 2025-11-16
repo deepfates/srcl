@@ -1,5 +1,5 @@
 
-import styles from '@components/MatrixLoader.module.scss';
+import styles from '@components/MatrixLoader.module.css';
 
 import * as React from 'react';
 

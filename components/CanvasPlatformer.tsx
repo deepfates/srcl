@@ -1,4 +1,4 @@
-import styles from '@components/CanvasPlatformer.module.scss';
+import styles from '@components/CanvasPlatformer.module.css';
 
 import * as React from 'react';
 

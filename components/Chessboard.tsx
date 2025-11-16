@@ -1,5 +1,5 @@
 
-import styles from '@components/Chessboard.module.scss';
+import styles from '@components/Chessboard.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

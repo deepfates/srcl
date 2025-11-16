@@ -1,5 +1,5 @@
 
-import styles from '@components/SidebarLayout.module.scss';
+import styles from '@components/SidebarLayout.module.css';
 import * as React from 'react';
 
 interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {

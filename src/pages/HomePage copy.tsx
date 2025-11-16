@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import '@root/global.scss';
+import '@root/global.css';
 
 import * as Constants from '@common/constants';
 

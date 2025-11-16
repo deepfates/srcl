@@ -1,5 +1,5 @@
 
-import styles from '@components/AS400.module.scss';
+import styles from '@components/AS400.module.css';
 
 import * as React from 'react';
 

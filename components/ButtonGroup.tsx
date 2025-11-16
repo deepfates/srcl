@@ -1,4 +1,4 @@
-import styles from '@components/ButtonGroup.module.scss';
+import styles from '@components/ButtonGroup.module.css';
 
 import * as Utilities from '@common/utilities';
 

@@ -1,5 +1,5 @@
 
-import styles from '@components/DropdownMenuTrigger.module.scss';
+import styles from '@components/DropdownMenuTrigger.module.css';
 
 import * as Position from '@common/position';
 import * as React from 'react';

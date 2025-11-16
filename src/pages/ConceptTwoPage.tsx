@@ -1,4 +1,4 @@
-import '@root/global.scss';
+import '@root/global.css';
 
 import DefaultActionBar from '@components/page/DefaultActionBar';
 import DebugGrid from '@components/DebugGrid';

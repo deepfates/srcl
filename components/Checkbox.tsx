@@ -1,5 +1,5 @@
 
-import styles from '@components/Checkbox.module.scss';
+import styles from '@components/Checkbox.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 

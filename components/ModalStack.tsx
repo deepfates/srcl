@@ -1,5 +1,5 @@
 
-import styles from '@components/ModalStack.module.scss';
+import styles from '@components/ModalStack.module.css';
 
 import * as React from 'react';
 

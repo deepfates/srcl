@@ -1,5 +1,5 @@
 
-import styles from '@components/Accordion.module.scss';
+import styles from '@components/Accordion.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

@@ -1,5 +1,5 @@
 
-import styles from '@components/RowSpaceBetween.module.scss';
+import styles from '@components/RowSpaceBetween.module.css';
 
 import * as React from 'react';
 

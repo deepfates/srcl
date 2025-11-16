@@ -12,7 +12,7 @@
  */
 /// <reference types="vite/client" />
 
-import '../global.scss';
+import '../global.css';
 
 // Ensure font assets referenced from the global stylesheet are copied into the
 // library build output. The eager glob registers each file with Vite/Rollup so
