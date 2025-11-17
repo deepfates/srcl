@@ -1,6 +1,19 @@
 import * as React from 'react';
 import type { RGBColor } from '@lib/dither';
 
+const srgbChannelToLinear = (value: number) => {
+  const channel = value / 255;
+  return channel <= 0.04045 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+};
+
+const getRelativeLuminance = (color: RGBColor): number => {
+  const [r, g, b] = color;
+  const rLin = srgbChannelToLinear(r);
+  const gLin = srgbChannelToLinear(g);
+  const bLin = srgbChannelToLinear(b);
+  return 0.2126 * rLin + 0.7152 * gLin + 0.0722 * bLin;
+};
+
 export type TwoColor = [RGBColor, RGBColor];
 
 export interface ThemeTwoColorState {
@@ -98,8 +111,30 @@ export function useThemeTwoColor(): ThemeTwoColorState {
       }
 
       if (paper && ink) {
-        setPalette([paper, ink]);
-        setHoverInk(hover ?? ink);
+        let finalPaper = paper;
+        let finalInk = ink;
+
+        const paperLum = getRelativeLuminance(paper);
+        const inkLum = getRelativeLuminance(ink);
+
+        if (inkLum > paperLum) {
+          finalPaper = ink;
+          finalInk = paper;
+        }
+
+        let finalHover = hover ?? finalInk;
+
+        if (hover) {
+          const hoverLum = getRelativeLuminance(hover);
+          const currentPaperLum = getRelativeLuminance(finalPaper);
+
+          if (hoverLum >= currentPaperLum) {
+            finalHover = finalInk;
+          }
+        }
+
+        setPalette([finalPaper, finalInk]);
+        setHoverInk(finalHover);
         setReady(true);
       } else {
         // Final fallback: white paper, black ink
