@@ -289,7 +289,7 @@ section {
   display: block;
 }
 
-body.theme-blue {
+.theme-blue {
   --theme-overlay: var(--color-blue-20-5);
   --theme-background: var(--color-blue-80);
   --theme-background-modal: var(--color-blue-70);
@@ -306,7 +306,7 @@ body.theme-blue {
   --theme-focused-foreground-subdued: var(--color-blue-50-5);
 }
 
-body.theme-light {
+.theme-light {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-white);
   --theme-background-modal: var(--color-gray-20);
@@ -323,7 +323,7 @@ body.theme-light {
   --theme-focused-foreground-subdued: var(--color-neon-green-50-5);
 }
 
-body.theme-dark {
+.theme-dark {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-gray-80);
@@ -340,7 +340,7 @@ body.theme-dark {
   --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
 }
 
-body.theme-green {
+.theme-green {
   --theme-overlay: var(--color-neon-green-100-4);
   --theme-background: rgba(44, 255, 5);
   --theme-background-modal: var(--color-neon-green-50);
@@ -357,7 +357,7 @@ body.theme-green {
   --theme-focused-foreground-subdued: rgba(255, 82, 243, 0.5);
 }
 
-body.theme-black-red {
+.theme-black-red {
   --theme-overlay: var(--color-red-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-red-70);
@@ -374,7 +374,7 @@ body.theme-black-red {
   --theme-focused-foreground-subdued: var(--color-red-70-4);
 }
 
-body.theme-black-teal {
+.theme-black-teal {
   --theme-overlay: var(--color-teal-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-teal-70);
@@ -391,7 +391,7 @@ body.theme-black-teal {
   --theme-focused-foreground-subdued: var(--color-teal-70-4);
 }
 
-body.theme-black-green {
+.theme-black-green {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-gray-90);
@@ -408,7 +408,7 @@ body.theme-black-green {
   --theme-focused-foreground-subdued: var(--color-gray-40);
 }
 
-body.theme-black-amber {
+.theme-black-amber {
   --theme-overlay: var(--color-amber-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-amber-90);
@@ -426,7 +426,7 @@ body.theme-black-amber {
 }
 
 /* LCARS Star Trek Theme */
-body.theme-lcars {
+.theme-lcars {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-gray-80);
@@ -444,7 +444,7 @@ body.theme-lcars {
 }
 
 /* Star Wars Hologram Theme */
-body.theme-hologram {
+.theme-hologram {
   --theme-overlay: var(--color-hologram-blue-4);
   --theme-background: var(--color-hologram-dark);
   --theme-background-modal: var(--color-hologram-dark-blue);
@@ -462,7 +462,7 @@ body.theme-hologram {
 }
 
 /* Blade Runner 2049 Theme */
-body.theme-blade {
+.theme-blade {
   --theme-overlay: var(--color-blade-orange-4);
   --theme-background: var(--color-blade-dark);
   --theme-background-modal: var(--color-blade-gray);
@@ -480,7 +480,7 @@ body.theme-blade {
 }
 
 /* Alien Nostromo Theme */
-body.theme-nostromo {
+.theme-nostromo {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-nostromo-dark);
   --theme-background-modal: var(--color-nostromo-gray);
@@ -498,7 +498,7 @@ body.theme-nostromo {
 }
 
 /* Tron Legacy Theme */
-body.theme-tron {
+.theme-tron {
   --theme-overlay: var(--color-tron-black-4);
   --theme-background: var(--color-tron-black);
   --theme-background-modal: var(--color-tron-dark);
@@ -516,7 +516,7 @@ body.theme-tron {
 }
 
 /* War Games WOPR Theme */
-body.theme-wopr {
+.theme-wopr {
   --theme-overlay: var(--color-wopr-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-wopr-90);
@@ -534,7 +534,7 @@ body.theme-wopr {
 }
 
 /* Minority Report Theme */
-body.theme-minority {
+.theme-minority {
   --theme-overlay: var(--color-minority-100-4);
   --theme-background: var(--color-minority-10);
   --theme-background-modal: var(--color-minority-20);
@@ -552,7 +552,7 @@ body.theme-minority {
 }
 
 /* Ghost in the Shell Theme */
-body.theme-gits {
+.theme-gits {
   --theme-overlay: var(--color-gits-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-gray-90);
@@ -570,7 +570,7 @@ body.theme-gits {
 }
 
 /* The Expanse MCRN Theme */
-body.theme-mcrn {
+.theme-mcrn {
   --theme-overlay: var(--color-mcrn-100-4);
   --theme-background: var(--color-mcrn-100);
   --theme-background-modal: var(--color-mcrn-90);
@@ -588,7 +588,7 @@ body.theme-mcrn {
 }
 
 /* Westworld Theme */
-body.theme-westworld {
+.theme-westworld {
   --theme-overlay: var(--color-westworld-10-4);
   --theme-background: var(--color-westworld-10);
   --theme-background-modal: var(--color-westworld-20);
@@ -606,7 +606,7 @@ body.theme-westworld {
 }
 
 /* Windows 95 Theme */
-body.theme-win95 {
+.theme-win95 {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-win95-gray-light);
   --theme-background-modal: var(--color-win95-gray);
@@ -624,7 +624,7 @@ body.theme-win95 {
 }
 
 /* Mac OS 9 Theme */
-body.theme-macos9 {
+.theme-macos9 {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-macos9-platinum);
   --theme-background-modal: var(--color-macos9-gray);
@@ -642,7 +642,7 @@ body.theme-macos9 {
 }
 
 /* Evangelion NERV Theme */
-body.theme-nerv {
+.theme-nerv {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-nerv-dark-red);
@@ -660,7 +660,7 @@ body.theme-nerv {
 }
 
 /* Akira Neo-Tokyo Theme */
-body.theme-akira {
+.theme-akira {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-akira-dark);
   --theme-background-modal: var(--color-akira-gray);
@@ -678,7 +678,7 @@ body.theme-akira {
 }
 
 /* Deus Ex Theme */
-body.theme-deus {
+.theme-deus {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-black-100);
   --theme-background-modal: var(--color-deus-dark-gold);
@@ -696,7 +696,7 @@ body.theme-deus {
 }
 
 /* Hotline Miami Theme */
-body.theme-hotline {
+.theme-hotline {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-hotline-dark);
   --theme-background-modal: var(--color-hotline-purple);
@@ -714,7 +714,7 @@ body.theme-hotline {
 }
 
 /* Outrun Synthwave Theme */
-body.theme-outrun {
+.theme-outrun {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-outrun-dark);
   --theme-background-modal: var(--color-outrun-purple);
@@ -732,7 +732,7 @@ body.theme-outrun {
 }
 
 /* Aperture Science Theme */
-body.theme-aperture {
+.theme-aperture {
   --theme-overlay: var(--color-aperture-gray-4);
   --theme-background: var(--color-white);
   --theme-background-modal: var(--color-aperture-gray-light);
@@ -749,127 +749,154 @@ body.theme-aperture {
   --theme-focused-foreground-subdued: var(--color-aperture-orange-5);
 }
 
-body.font-use-berkeley-mono {
+.font-use-berkeley-mono {
   --font-family-mono: 'TX02Mono-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-geist-mono {
+.font-use-geist-mono {
   --font-family-mono: 'GeistMono-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-monaspace-neon {
+.font-use-monaspace-neon {
   --font-family-mono: 'MonaspaceNeon-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-monaspace-argon {
+.font-use-monaspace-argon {
   --font-family-mono: 'MonaspaceArgon-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-monaspace-krypton {
+.font-use-monaspace-krypton {
   --font-family-mono: 'MonaspaceKrypton-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-monaspace-radon {
+.font-use-monaspace-radon {
   --font-family-mono: 'MonaspaceRadon-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-monaspace-xenon {
+.font-use-monaspace-xenon {
   --font-family-mono: 'MonaspaceXenon-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-anonymous-pro {
+.font-use-anonymous-pro {
   --font-family-mono: 'AnonymousPro-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-chivo-mono {
+.font-use-chivo-mono {
   --font-family-mono: 'ChivoMono-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-doto {
+.font-use-doto {
   --font-family-mono: 'Doto-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-share-tech-mono {
+.font-use-share-tech-mono {
   --font-family-mono: 'ShareTechMono-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-space-mono {
+.font-use-space-mono {
   --font-family-mono: 'SpaceMono-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-syne-mono {
+.font-use-syne-mono {
   --font-family-mono: 'SyneMono-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-vt323 {
+.font-use-vt323 {
   --font-family-mono: 'VT323-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-victor-mono {
+.font-use-victor-mono {
   --font-family-mono: 'VictorMono-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-workbench {
+.font-use-workbench {
   --font-family-mono: 'Workbench-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-xanh-mono {
+.font-use-xanh-mono {
   --font-family-mono: 'XanhMono-Regular', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-julia-mono {
+.font-use-julia-mono {
   --font-family-mono: 'JuliaMono', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-tt2020 {
+.font-use-tt2020 {
   --font-family-mono: 'TT2020', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-latin-modern-mono {
+.font-use-latin-modern-mono {
   --font-family-mono: 'Latin Modern Mono', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-commit-mono {
+.font-use-commit-mono {
   --font-family-mono: 'CommitMono-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-departure-mono {
+.font-use-departure-mono {
   --font-family-mono: 'DepartureMono-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-fira-code {
+.font-use-fira-code {
   --font-family-mono: 'FiraCode-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-fragment-mono {
+.font-use-fragment-mono {
   --font-family-mono: 'FragmentMono-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-iosevka-term {
+.font-use-iosevka-term {
   --font-family-mono: 'IosevkaTerm-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-jet-brains-mono {
+.font-use-jet-brains-mono {
   --font-family-mono: 'JetBrainsMono-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-server-mono {
+.font-use-server-mono {
   --font-family-mono: 'ServerMono', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-sfmono-square {
+.font-use-sfmono-square {
   --font-family-mono: 'SFMonoSquare-Regular', sans-serif;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-serious-shanns {
+.font-use-serious-shanns {
   --font-family-mono: 'SeriousShanns', monospace;
+  font-family: var(--font-family-mono);
 }
 
-body.font-use-atkinson-hyperlegible-mono {
+.font-use-atkinson-hyperlegible-mono {
   --font-family-mono: 'AtkinsonHyperlegibleMono-Regular', monospace;
-}
-
-#__next {
+  font-family: var(--font-family-mono);
 }
 
 html,

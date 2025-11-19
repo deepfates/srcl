@@ -14,17 +14,19 @@ const ButtonGroup = (props) => {
     <div className={Utilities.classNames(styles.root, props.isFull ? styles.full : null)}>
       {props.items.map((each) => {
         if (each.items) {
+          console.log('each', each)
           return (
             <DropdownMenuTrigger key={each.body} items={each.items} hotkey={each.openHotkey}>
-              <ActionButton hotkey={each.hotkey} isSelected={each.selected}>
+              <ActionButton hotkey={each.hotkey} className={each.className} isSelected={each.selected}>
                 {each.body}
               </ActionButton>
             </DropdownMenuTrigger>
           );
         }
 
+        
         return (
-          <ActionButton key={each.body} onClick={each.onClick} hotkey={each.hotkey} isSelected={each.selected}>
+          <ActionButton key={each.body} className={each.className} onClick={each.onClick} hotkey={each.hotkey} isSelected={each.selected}>
             {each.body}
           </ActionButton>
         );

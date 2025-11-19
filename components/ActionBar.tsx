@@ -9,6 +9,7 @@ interface ActionBarItem {
   onClick?: () => void;
   openHotkey?: string;
   selected?: boolean;
+  className?: string;
   body: React.ReactNode;
   items?: any;
 }

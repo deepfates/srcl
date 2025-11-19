@@ -1,9 +1,11 @@
 import styles from '@components/ActionListItem.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 interface ActionListItemProps {
   style?: React.CSSProperties;
+  className?: string;
   icon?: React.ReactNode;
   children?: React.ReactNode;
   href?: string;
@@ -13,13 +15,13 @@ interface ActionListItemProps {
 }
 
 const ActionListItem: React.FC<ActionListItemProps> = (props) => {
-  const { href, target, onClick, children, icon, style, disabled } = props;
+  const { href, target, onClick, children, icon, style, className, disabled } = props;
 
   if (disabled) {
     return (
       <div className={styles.disabled} style={style} tabIndex={-1} role="button" aria-disabled="true">
         <figure className={styles.icon}>{icon}</figure>
-        <span className={styles.text}>{children}</span>
+        <span className={Utilities.classNames(styles.text, className)}>{children}</span>
       </div>
     );
   }
@@ -28,7 +30,7 @@ const ActionListItem: React.FC<ActionListItemProps> = (props) => {
     return (
       <a className={styles.item} href={href} target={target} style={style} tabIndex={0} role="link">
         <figure className={styles.icon}>{icon}</figure>
-        <span className={styles.text}>{children}</span>
+        <span className={Utilities.classNames(styles.text, className)}>{children}</span>
       </a>
     );
   }
@@ -36,7 +38,7 @@ const ActionListItem: React.FC<ActionListItemProps> = (props) => {
   return (
     <div className={styles.item} onClick={onClick} style={style} tabIndex={0} role="button">
       <figure className={styles.icon}>{icon}</figure>
-      <span className={styles.text}>{children}</span>
+      <span className={Utilities.classNames(styles.text, className)}>{children}</span>
     </div>
   );
 };

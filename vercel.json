@@ -4,6 +4,14 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/storybook",
+      "destination": "/storybook/index.html"
+    },
+    {
+      "source": "/storybook/:path*",
+      "destination": "/storybook/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

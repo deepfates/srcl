@@ -23,7 +23,6 @@ import ButtonGroup from '@components/ButtonGroup';
 import Card from '@components/Card';
 import CardDouble from '@components/CardDouble';
 import Checkbox from '@components/Checkbox';
-import Chessboard from '@components/Chessboard';
 import CodeBlock from '@components/CodeBlock';
 import ContentFluid from '@components/ContentFluid';
 import ComboBox from '@components/ComboBox';
@@ -1437,6 +1436,9 @@ int main() {
       <Grid>
         <ActionListItem icon={`⭢`} href="https://github.com/deepfates/srcl" target="_blank">
           View the SRCL source code
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/storybook">
+          Browse component documentation
         </ActionListItem>
       </Grid>
       <ModalStack />

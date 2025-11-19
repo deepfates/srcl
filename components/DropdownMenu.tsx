@@ -14,6 +14,7 @@ interface DropdownMenuItemProps {
   icon?: React.ReactNode;
   href?: string;
   target?: string;
+  className?: string;
   onClick?: () => void;
   modal?: any;
   modalProps?: Record<string, unknown>;
@@ -49,6 +50,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>((props,
           return (
             <ActionListItem
               key={`action-items-${index}`}
+              className={each.className}
               children={each.children}
               icon={each.icon}
               href={each.href}
