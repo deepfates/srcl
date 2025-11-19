@@ -5,10 +5,6 @@ import ModalStack from './ModalStack';
 import ModalAlert from './modals/ModalAlert';
 import ModalError from './modals/ModalError';
 import ModalCreateAccount from './modals/ModalCreateAccount';
-import ModalChess from './modals/ModalChess';
-import ModalCanvasSnake from './modals/ModalCanvasSnake';
-import ModalDOMSnake from './modals/ModalDOMSnake';
-import ModalCanvasPlatformer from './modals/ModalCanvasPlatformer';
 import ModalMatrixModes from './modals/ModalMatrixModes';
 
 const meta = {
@@ -53,27 +49,6 @@ export const AllModals: Story = {
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
             <ModalTrigger modal={ModalCreateAccount}>
               <Button>Create Account Form</Button>
-            </ModalTrigger>
-          </div>
-        </section>
-
-        <section>
-          <h2>Game Modals</h2>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
-            <ModalTrigger modal={ModalChess}>
-              <Button>Chess Game</Button>
-            </ModalTrigger>
-            
-            <ModalTrigger modal={ModalCanvasSnake}>
-              <Button>Snake (Canvas)</Button>
-            </ModalTrigger>
-            
-            <ModalTrigger modal={ModalDOMSnake}>
-              <Button>Snake (DOM)</Button>
-            </ModalTrigger>
-            
-            <ModalTrigger modal={ModalCanvasPlatformer}>
-              <Button>Platformer Game</Button>
             </ModalTrigger>
           </div>
         </section>

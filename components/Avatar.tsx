@@ -1,6 +1,6 @@
 
 import styles from '@components/Avatar.module.css';
-import Dither from '@components/dither';
+import Dither from '@components/Dither';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 import type { RGBColor } from '@lib/dither';
