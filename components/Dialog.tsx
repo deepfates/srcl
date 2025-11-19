@@ -5,7 +5,7 @@ import * as React from 'react';
 import Block from '@components/Block';
 import Button from '@components/Button';
 
-interface DialogProps {
+export interface DialogProps {
   title?: React.ReactNode;
   children?: React.ReactNode;
   style?: React.CSSProperties;

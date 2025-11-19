@@ -4,7 +4,7 @@ import styles from '@components/CodeBlock.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
+export interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   children?: React.ReactNode;
 }
 

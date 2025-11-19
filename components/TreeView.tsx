@@ -3,7 +3,7 @@ import styles from '@components/TreeView.module.css';
 
 import * as React from 'react';
 
-interface TreeViewProps {
+export interface TreeViewProps {
   children?: React.ReactNode;
   defaultValue?: boolean;
   depth?: number;

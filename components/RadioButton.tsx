@@ -3,7 +3,7 @@ import styles from '@components/RadioButton.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-interface RadioButtonProps {
+export interface RadioButtonProps {
   style?: React.CSSProperties;
   name: string;
   value: string;

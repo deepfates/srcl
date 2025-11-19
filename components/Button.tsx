@@ -4,7 +4,7 @@ import styles from '@components/Button.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: 'PRIMARY' | 'SECONDARY';
   isDisabled?: boolean;
   children?: React.ReactNode;

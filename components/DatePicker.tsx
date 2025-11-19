@@ -3,7 +3,7 @@ import styles from '@components/DatePicker.module.css';
 
 import * as React from 'react';
 
-interface DatePickerProps {
+export interface DatePickerProps {
   year?: number;
   month?: number;
 }

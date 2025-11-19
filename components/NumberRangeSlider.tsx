@@ -3,7 +3,7 @@ import styles from '@components/NumberRangeSlider.module.css';
 
 import * as React from 'react';
 
-interface RangerProps {
+export interface RangerProps {
   defaultValue?: number;
   max?: number;
   min?: number;

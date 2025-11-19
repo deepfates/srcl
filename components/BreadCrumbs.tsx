@@ -7,7 +7,7 @@ interface BreadCrumbsItem {
   name: string;
 }
 
-interface BreadCrumbsProps {
+export interface BreadCrumbsProps {
   items: BreadCrumbsItem[];
 }
 

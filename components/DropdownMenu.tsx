@@ -9,7 +9,7 @@ import ModalTrigger from '@components/ModalTrigger';
 
 import { useHotkeys } from '@modules/hotkeys';
 
-interface DropdownMenuItemProps {
+export interface DropdownMenuItemProps {
   children: React.ReactNode;
   icon?: React.ReactNode;
   href?: string;
@@ -21,7 +21,7 @@ interface DropdownMenuItemProps {
   disabled?: boolean;
 }
 
-interface DropdownMenuProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DropdownMenuProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: (event?: MouseEvent | TouchEvent | KeyboardEvent) => void;
   items?: DropdownMenuItemProps[];
 }

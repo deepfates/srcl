@@ -2,7 +2,7 @@ import styles from '@components/Block.module.css';
 
 import * as React from 'react';
 
-interface BlockProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface BlockProps extends React.HTMLAttributes<HTMLSpanElement> {
   children?: React.ReactNode;
 }
 

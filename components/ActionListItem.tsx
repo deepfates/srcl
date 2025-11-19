@@ -3,7 +3,7 @@ import styles from '@components/ActionListItem.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-interface ActionListItemProps {
+export interface ActionListItemProps {
   style?: React.CSSProperties;
   className?: string;
   icon?: React.ReactNode;

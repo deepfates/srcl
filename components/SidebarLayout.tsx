@@ -2,7 +2,7 @@
 import styles from '@components/SidebarLayout.module.css';
 import * as React from 'react';
 
-interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
+export interface SidebarLayoutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   children?: React.ReactNode;
   sidebar?: React.ReactNode;
   defaultSidebarWidth?: number;

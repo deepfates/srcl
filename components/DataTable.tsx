@@ -3,7 +3,7 @@ import styles from '@components/DataTable.module.css';
 
 import * as React from 'react';
 
-interface TableProps {
+export interface TableProps {
   data: string[][];
 }
 

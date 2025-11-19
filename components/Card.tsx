@@ -2,7 +2,7 @@ import styles from '@components/Card.module.css';
 
 import * as React from 'react';
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   title?: string | any;
   mode?: string | any;

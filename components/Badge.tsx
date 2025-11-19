@@ -3,7 +3,7 @@ import styles from '@components/Badge.module.css';
 
 import * as React from 'react';
 
-interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   children?: React.ReactNode;
 }
 

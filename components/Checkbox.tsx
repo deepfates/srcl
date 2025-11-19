@@ -3,7 +3,7 @@ import styles from '@components/Checkbox.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-interface CheckboxProps {
+export interface CheckboxProps {
   style?: React.CSSProperties;
   checkboxStyle?: React.CSSProperties;
   name: string;

@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { useModals } from '@components/page/ModalContext';
 
-interface ModalStackProps {}
+export interface ModalStackProps {}
 
 const ModalStack: React.FC<ModalStackProps> = () => {
   const { modalStack } = useModals();

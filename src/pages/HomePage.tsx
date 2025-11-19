@@ -86,6 +86,9 @@ export default function HomePage(props) {
         <ActionListItem icon={`⭢`} href="https://github.com/deepfates/srcl" target="_blank">
           View the SRCL source code
         </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/patterns">
+          Browse component patterns
+        </ActionListItem>
       </Grid>
       <Grid>
         <Accordion defaultValue={true} title="ACTION BAR">
@@ -1437,8 +1440,8 @@ int main() {
         <ActionListItem icon={`⭢`} href="https://github.com/deepfates/srcl" target="_blank">
           View the SRCL source code
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/storybook">
-          Browse component documentation
+        <ActionListItem icon={`⭢`} href="/patterns">
+          Browse component patterns
         </ActionListItem>
       </Grid>
       <ModalStack />

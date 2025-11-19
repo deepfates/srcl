@@ -3,7 +3,7 @@ import styles from '@components/MatrixLoader.module.css';
 
 import * as React from 'react';
 
-interface MatrixLoaderProps {
+export interface MatrixLoaderProps {
   rows?: number;
   direction?: undefined | 'top-to-bottom' | 'left-to-right';
   mode?: undefined | 'greek' | 'katakana';

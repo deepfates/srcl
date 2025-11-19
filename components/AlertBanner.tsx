@@ -2,7 +2,7 @@ import styles from '@components/AlertBanner.module.css';
 
 import * as React from 'react';
 
-interface AlertBannerProps {
+export interface AlertBannerProps {
   style?: any;
   children?: any;
 }

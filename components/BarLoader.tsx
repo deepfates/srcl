@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import styles from '@components/BarLoader.module.css';
 
-interface BarLoaderProps {
+export interface BarLoaderProps {
   intervalRate?: number;
   progress?: number;
 }

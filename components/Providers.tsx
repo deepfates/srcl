@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ModalProvider } from '@components/page/ModalContext';
 import { HotkeysProvider } from '@modules/hotkeys';
 
-interface ProvidersProps {
+export interface ProvidersProps {
   children: React.ReactNode;
 }
 

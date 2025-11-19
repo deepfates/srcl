@@ -6,7 +6,7 @@ import * as Utilities from '@common/utilities';
 import type { RGBColor } from '@lib/dither';
 import getSafeImageSrc from '@lib/getSafeImageSrc';
 
-interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
+export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
   src?: string;
   href?: string;
   target?: string;

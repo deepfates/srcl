@@ -2,7 +2,7 @@ import styles from '@components/Grid.module.css';
 
 import * as React from 'react';
 
-interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 

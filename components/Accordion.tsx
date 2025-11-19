@@ -6,7 +6,7 @@ import * as Utilities from '@common/utilities';
 
 import Row from '@components/Row';
 
-interface AccordionProps {
+export interface AccordionProps {
   defaultValue?: boolean;
   title: string;
   children?: React.ReactNode;

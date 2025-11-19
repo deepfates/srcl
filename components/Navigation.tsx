@@ -3,7 +3,7 @@ import styles from '@components/Navigation.module.css';
 
 import * as React from 'react';
 
-interface NavigationProps extends React.HTMLAttributes<HTMLElement> {
+export interface NavigationProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode;
   logoHref?: string;
   logoTarget?: React.HTMLAttributeAnchorTarget;

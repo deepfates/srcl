@@ -17,7 +17,7 @@ const SEQUENCES = [
   ['◐', '◓', '◑', '◒'],
 ];
 
-interface BlockLoaderProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
+export interface BlockLoaderProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
   mode?: number;
 }
 

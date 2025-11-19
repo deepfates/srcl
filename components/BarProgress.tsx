@@ -2,7 +2,7 @@ import styles from '@components/BarProgress.module.css';
 
 import * as React from 'react';
 
-interface BarProgressProps {
+export interface BarProgressProps {
   intervalRate?: number;
   progress?: number;
   fillChar?: string;

@@ -2,7 +2,7 @@ import styles from '@components/Divider.module.css';
 
 import * as React from 'react';
 
-interface DividerProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface DividerProps extends React.HTMLAttributes<HTMLSpanElement> {
   children?: React.ReactNode;
   type?: string | any;
   style?: any;

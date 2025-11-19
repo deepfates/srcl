@@ -2,7 +2,7 @@ import styles from '@components/Tooltip.module.css';
 
 import * as React from 'react';
 
-interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(({ style: propStyle, ...rest }, ref) => {
   const style: React.CSSProperties = { ...propStyle };

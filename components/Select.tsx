@@ -4,7 +4,7 @@ import styles from '@components/Select.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-interface SelectProps {
+export interface SelectProps {
   name: string;
   options: string[];
   placeholder?: string;

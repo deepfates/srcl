@@ -2,7 +2,7 @@ import styles from '@components/CardDouble.module.css';
 
 import * as React from 'react';
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   title?: string | any;
   mode?: string | any;

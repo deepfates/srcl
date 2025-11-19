@@ -2,7 +2,7 @@ import styles from '@components/Text.module.css';
 
 import * as React from 'react';
 
-interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
+export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   children?: React.ReactNode;
 }
 

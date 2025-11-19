@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import RadioButton from '@components/RadioButton';
 
-interface RadioButtonGroupProps {
+export interface RadioButtonGroupProps {
   options: { value: string; label: string }[];
   defaultValue?: string;
 }

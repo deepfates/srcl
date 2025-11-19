@@ -14,7 +14,7 @@ interface ActionBarItem {
   items?: any;
 }
 
-interface ActionBarProps {
+export interface ActionBarProps {
   items: ActionBarItem[];
 }
 
