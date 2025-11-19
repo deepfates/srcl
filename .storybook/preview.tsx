@@ -15,7 +15,7 @@ const preview: Preview = {
     },
     layout: 'fullscreen',
     backgrounds: {
-      disable: true,
+      disabled: true,
     },
   },
   globalTypes: {
