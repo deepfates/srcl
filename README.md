@@ -43,6 +43,43 @@ Go to `http://localhost:10000` in your browser of choice.
 
 We use [Vercel](https://vercel.com/home) for hosting.
 
+## Storybook
+
+SRCL uses [Storybook](https://storybook.js.org/) for component documentation and interactive development. All components have stories that demonstrate their usage, variants, and real-world examples.
+
+### Running Storybook
+
+```sh
+npm run storybook
+```
+
+This will start Storybook at `http://localhost:6006`.
+
+### What's in Storybook
+
+- **Interactive Examples**: Every component has working examples you can interact with
+- **Real Data**: Stories use actual data from the app (animals, principles, dialogues) for realistic demonstrations
+- **Theme & Font Switching**: Use the toolbar to preview components in all 18 themes and 30 monospace fonts
+- **Working Hotkeys**: Keyboard shortcuts are fully functional in stories - press the keys to test them
+- **Props Documentation**: Auto-generated documentation for all component props and TypeScript types
+- **Organized by Category**: Components grouped into Forms, Interactive, Data Display, Layout, Games, and Utility
+
+### Key Story Examples
+
+- **Modal System** (`Components/Interactive/Modals`) - Comprehensive showcase of all modal types (alerts, forms, games)
+- **ActionButton** (`Components/Interactive/ActionButton`) - Working hotkey examples (⌘+S, ⌘+N, ⌘+O)
+- **Global Navigation** (`Components/Utility/Providers`) - Demo of arrow key navigation and Enter/Space activation
+- **DataTable** (`Components/Data Display/DataTable`) - Live stock ticker with animal-themed companies
+- **TextArea** (`Components/Forms/TextArea`) - Auto-playing typewriter effect with literary quotes
+
+### Building Storybook
+
+```sh
+npm run build:storybook
+```
+
+This creates a static build in `dist/storybook` that can be deployed anywhere.
+
 ### Scripts (Optional)
 
 If you need to run node script without running the server, use this example to get started
