@@ -112,8 +112,240 @@ interface DefaultActionBarProps {
   }[];
 }
 
+type FontConfig = {
+  name: string;
+  className: string;
+  isDefault?: boolean;
+};
+
+const FONT_CATEGORIES: FontConfig[][] = [
+  // System core
+  [
+    { name: 'Berkeley Mono™', className: 'font-use-berkeley-mono' },
+    { name: 'Commit Mono', className: 'font-use-commit-mono' },
+    { name: 'Geist Mono (Default)', className: 'font-use-geist-mono', isDefault: true },
+    { name: 'JuliaMono', className: 'font-use-julia-mono' },
+    { name: 'Neon', className: 'font-use-monaspace-neon' },
+  ],
+  // Round/Wide
+  [
+    { name: 'Argon', className: 'font-use-monaspace-argon' },
+    { name: 'Atkinson Hyperlegible Mono', className: 'font-use-atkinson-hyperlegible-mono' },
+    { name: 'Space Mono', className: 'font-use-space-mono' },
+    { name: 'Fira Code', className: 'font-use-fira-code' },
+  ],
+  // Angular/Narrow
+  [
+    { name: 'Iosevka Term', className: 'font-use-iosevka-term' },
+    { name: 'Krypton', className: 'font-use-monaspace-krypton' },
+    { name: 'Share Tech Mono', className: 'font-use-share-tech-mono' },
+    { name: 'VT323', className: 'font-use-vt323' },
+    { name: 'Workbench', className: 'font-use-workbench' },
+  ],
+  // Hand
+  [
+    { name: 'Radon', className: 'font-use-monaspace-radon' },
+    { name: 'Serious Shanns', className: 'font-use-serious-shanns' },
+    { name: 'Victor Mono', className: 'font-use-victor-mono' },
+    { name: 'Anonymous Pro', className: 'font-use-anonymous-pro' },
+  ],
+  // Type
+  [
+    { name: 'Latin Modern Mono', className: 'font-use-latin-modern-mono' },
+    { name: 'SFMono Square', className: 'font-use-sfmono-square' },
+    { name: 'TT2020', className: 'font-use-tt2020' },
+  ],
+  // Serif
+  [
+    { name: 'Xenon', className: 'font-use-monaspace-xenon' },
+    { name: 'Xanh Mono', className: 'font-use-xanh-mono' },
+  ],
+];
+
+type ThemeConfig = {
+  name: string;
+  className: string;
+  isDefault?: boolean;
+  category?: string;
+};
+
+const THEME_CATEGORIES: { label?: string; themes: ThemeConfig[] }[] = [
+  {
+    label: 'Light themes',
+    themes: [
+      { name: 'Highlight', className: 'theme-light' },
+      { name: 'Aperture', className: 'theme-aperture' },
+      { name: 'Westworld', className: 'theme-westworld' }
+    ]
+  },
+  {
+    label: 'Dark themes',
+    themes: [
+      { name: 'Midnight', className: 'theme-dark' },
+      { name: 'BSOD', className: 'theme-blue' },
+      { name: 'Matrix', className: 'theme-green' }
+    ]
+  },
+  {
+    label: 'Terminal/CRT themes',
+    themes: [
+      { name: 'Phosphor', className: 'theme-black-green' },
+      { name: 'Sulfur', className: 'theme-black-amber', isDefault: true },
+      { name: 'Neon', className: 'theme-black-red' }
+    ]
+  },
+  {
+    label: 'Sci-Fi themes',
+    themes: [
+      { name: 'LCARS', className: 'theme-lcars' },
+      { name: 'Hologram', className: 'theme-hologram' },
+      { name: '2049', className: 'theme-blade' },
+      { name: 'Nostromo', className: 'theme-nostromo' },
+      { name: 'NERV', className: 'theme-nerv' },
+      { name: 'Neo-Tokyo', className: 'theme-akira' }
+    ]
+  },
+  {
+    label: 'Retro/Gaming themes',
+    themes: [
+      { name: 'Windows 95', className: 'theme-win95' },
+      { name: 'Mac OS 9', className: 'theme-macos9' },
+      { name: 'Outrun', className: 'theme-outrun' }
+    ]
+  }
+];
+
+const createFontItem = (
+  font: FontConfig,
+  currentFont: string,
+  handleFontChange: (className: string) => void
+) => {
+  const isSelected = font.isDefault
+    ? currentFont === font.className || !currentFont
+    : currentFont === font.className;
+
+  return {
+    icon: isSelected ? '●' : '○',
+    children: font.name,
+    onClick: () => handleFontChange(font.className),
+    className: font.className,
+  };
+};
+
+const createFontItems = (
+  currentFont: string,
+  handleFontChange: (className: string) => void
+) => {
+  const items: any[] = [];
+
+  FONT_CATEGORIES.forEach((category, categoryIndex) => {
+    // Add spacer before each category (except first)
+    if (categoryIndex > 0) {
+      items.push({
+        icon: '',
+        children: '',
+        disabled: true,
+      });
+    }
+
+    // Add fonts in this category
+    category.forEach((font) => {
+      items.push(createFontItem(font, currentFont, handleFontChange));
+    });
+  });
+
+  return items;
+};
+
+// Helper: get theme colors by reading CSS variables from the theme class
+const getThemePreviewStyle = (themeClassName: string): { color?: string; background?: string } => {
+  // Create a temporary element with the theme class to read CSS variables
+  const tempEl = document.createElement('div');
+  tempEl.className = themeClassName;
+  tempEl.style.position = 'absolute';
+  tempEl.style.visibility = 'hidden';
+  tempEl.style.pointerEvents = 'none';
+  document.body.appendChild(tempEl);
+
+  try {
+    const computedStyle = window.getComputedStyle(tempEl);
+    const background = computedStyle.getPropertyValue('--theme-background').trim();
+    const text = computedStyle.getPropertyValue('--theme-text').trim();
+
+    // Only return styles if we got valid values
+    if (background && text) {
+      return {
+        background: background || undefined,
+        color: text || undefined,
+      };
+    }
+  } catch (error) {
+    // Fallback if something goes wrong
+  } finally {
+    // Always clean up the temporary element
+    if (tempEl.parentNode) {
+      document.body.removeChild(tempEl);
+    }
+  }
+
+  return {};
+};
+
+const createThemeItem = (
+  theme: ThemeConfig,
+  currentTheme: string,
+  handleThemeChange: (className: string) => void
+) => {
+  const isSelected = theme.isDefault
+    ? currentTheme === theme.className || !currentTheme
+    : currentTheme === theme.className;
+
+  const style = getThemePreviewStyle(theme.className);
+
+  return {
+    icon: isSelected ? '●' : '○',
+    children: (
+      <span
+        style={{
+          color: style.color,
+          background: 'none',
+          fontWeight: isSelected ? 600 : 500,
+          textDecoration: 'none',
+          padding: '0 2px',
+          verticalAlign: 'middle',
+        }}
+      >
+        {theme.name}
+      </span>
+    ),
+    onClick: () => handleThemeChange(theme.className),
+    className: theme.className,
+  };
+};
+
+const createThemeItems = (
+  currentTheme: string,
+  handleThemeChange: (className: string) => void
+) => {
+  const items: any[] = [];
+
+  THEME_CATEGORIES.forEach((categoryObj, idx) => {
+    // Add spacer before each category (even the first, for parity with old code)
+    items.push({
+      icon: '',
+      children: '',
+      disabled: true,
+    });
+
+    categoryObj.themes.forEach((theme) => {
+      items.push(createThemeItem(theme, currentTheme, handleThemeChange));
+    });
+  });
+
+  return items;
+};
+
 const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
-  const [isGrid, setGrid] = React.useState(false);
   const [currentFont, setCurrentFont] = React.useState<string>('');
   const [currentTheme, setCurrentTheme] = React.useState<string>('');
 
@@ -158,310 +390,13 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             hotkey: '⌃+O',
             body: 'Fonts',
             openHotkey: 'ctrl+o',
-            items: [
-              // Open Source Fonts
-              {
-                icon: '─',
-                children: '',
-                disabled: true,
-              },
-              // Default
-              {
-                icon: currentFont === 'font-use-geist-mono' || !currentFont ? '●' : '○',
-                children: 'Geist Mono (Default)',
-                onClick: () => handleFontChange('font-use-geist-mono'),
-                className: 'font-use-geist-mono',
-              },
-
-              {
-                icon: currentFont === 'font-use-iosevka-term' ? '●' : '○',
-                children: 'Iosevka Term',
-                onClick: () => handleFontChange('font-use-iosevka-term'),
-                className: 'font-use-iosevka-term',
-              },
-              {
-                icon: currentFont === 'font-use-commit-mono' ? '●' : '○',
-                children: 'Commit Mono',
-                onClick: () => handleFontChange('font-use-commit-mono'),
-                className: 'font-use-commit-mono',
-              },
-              {
-                icon: currentFont === 'font-use-fira-code' ? '●' : '○',
-                children: 'Fira Code',
-                onClick: () => handleFontChange('font-use-fira-code'),
-                className: 'font-use-fira-code',
-              },
-
-              {
-                icon: currentFont === 'font-use-sfmono-square' ? '●' : '○',
-                children: 'SFMono Square',
-                onClick: () => handleFontChange('font-use-sfmono-square'),
-                className: 'font-use-sfmono-square',
-              },
-
-              // Monaspace Family
-              // Monospace fonts - spacer
-              {
-                icon: '',
-                children: '',
-                disabled: true,
-              },
-              {
-                icon: currentFont === 'font-use-monaspace-neon' ? '●' : '○',
-                children: 'Neon',
-                onClick: () => handleFontChange('font-use-monaspace-neon'),
-                className: 'font-use-monaspace-neon',
-              },
-              {
-                icon: currentFont === 'font-use-monaspace-argon' ? '●' : '○',
-                children: 'Argon',
-                onClick: () => handleFontChange('font-use-monaspace-argon'),
-                className: 'font-use-monaspace-argon',
-              },
-              {
-                icon: currentFont === 'font-use-monaspace-krypton' ? '●' : '○',
-                children: 'Krypton',
-                onClick: () => handleFontChange('font-use-monaspace-krypton'),
-                className: 'font-use-monaspace-krypton',
-              },
-              {
-                icon: currentFont === 'font-use-monaspace-radon' ? '●' : '○',
-                children: 'Radon',
-                onClick: () => handleFontChange('font-use-monaspace-radon'),
-                className: 'font-use-monaspace-radon',
-              },
-              {
-                icon: currentFont === 'font-use-monaspace-xenon' ? '●' : '○',
-                children: 'Xenon',
-                onClick: () => handleFontChange('font-use-monaspace-xenon'),
-                className: 'font-use-monaspace-xenon',
-              },
-
-              // Google Fonts
-              {
-                icon: '─',
-                children: '',
-                disabled: true,
-              },
-              {
-                icon: currentFont === 'font-use-anonymous-pro' ? '●' : '○',
-                children: 'Anonymous Pro',
-                onClick: () => handleFontChange('font-use-anonymous-pro'),
-                className: 'font-use-anonymous-pro',
-              },
-              {
-                icon: currentFont === 'font-use-share-tech-mono' ? '●' : '○',
-                children: 'Share Tech Mono',
-                onClick: () => handleFontChange('font-use-share-tech-mono'),
-                className: 'font-use-share-tech-mono',
-              },
-              {
-                icon: currentFont === 'font-use-space-mono' ? '●' : '○',
-                children: 'Space Mono',
-                onClick: () => handleFontChange('font-use-space-mono'),
-                className: 'font-use-space-mono',
-              },
-              {
-                icon: currentFont === 'font-use-vt323' ? '●' : '○',
-                children: 'VT323',
-                onClick: () => handleFontChange('font-use-vt323'),
-                className: 'font-use-vt323',
-              },
-              {
-                icon: currentFont === 'font-use-victor-mono' ? '●' : '○',
-                children: 'Victor Mono',
-                onClick: () => handleFontChange('font-use-victor-mono'),
-                className: 'font-use-victor-mono',
-              },
-              {
-                icon: currentFont === 'font-use-workbench' ? '●' : '○',
-                children: 'Workbench',
-                onClick: () => handleFontChange('font-use-workbench'),
-                className: 'font-use-workbench',
-              },
-              {
-                icon: currentFont === 'font-use-xanh-mono' ? '●' : '○',
-                children: 'Xanh Mono',
-                onClick: () => handleFontChange('font-use-xanh-mono'),
-                className: 'font-use-xanh-mono',
-              },
-
-              // Downloaded fonts - spacer
-              {
-                icon: '',
-                children: '',
-                disabled: true,
-              },
-              {
-                icon: currentFont === 'font-use-atkinson-hyperlegible-mono' ? '●' : '○',
-                children: 'Atkinson Hyperlegible Mono',
-                onClick: () => handleFontChange('font-use-atkinson-hyperlegible-mono'),
-                className: 'font-use-atkinson-hyperlegible-mono',
-              },
-              {
-                icon: currentFont === 'font-use-berkeley-mono' ? '●' : '○',
-                children: 'Berkeley Mono™',
-                onClick: () => handleFontChange('font-use-berkeley-mono'),
-                className: 'font-use-berkeley-mono',
-              },
-              {
-                icon: currentFont === 'font-use-julia-mono' ? '●' : '○',
-                children: 'JuliaMono',
-                onClick: () => handleFontChange('font-use-julia-mono'),
-                className: 'font-use-julia-mono',
-              },
-              {
-                icon: currentFont === 'font-use-tt2020' ? '●' : '○',
-                children: 'TT2020',
-                onClick: () => handleFontChange('font-use-tt2020'),
-                className: 'font-use-tt2020',
-              },
-              {
-                icon: currentFont === 'font-use-latin-modern-mono' ? '●' : '○',
-                children: 'Latin Modern Mono',
-                onClick: () => handleFontChange('font-use-latin-modern-mono'),
-                className: 'font-use-latin-modern-mono',
-              },
-              {
-                icon: currentFont === 'font-use-serious-shanns' ? '●' : '○',
-                children: 'Serious Shanns',
-                onClick: () => handleFontChange('font-use-serious-shanns'),
-                className: 'font-use-serious-shanns',
-              },
-            ],
+            items: createFontItems(currentFont, handleFontChange),
           },
           {
             hotkey: '⌃+T',
             body: 'Theme',
             openHotkey: 'ctrl+t',
-            items: [
-              // Light themes - spacer
-              {
-                icon: '',
-                children: '',
-                disabled: true,
-              },
-              {
-                icon: currentTheme === 'theme-light' ? '●' : '○',
-                children: 'Highlight',
-                onClick: () => handleThemeChange('theme-light'),
-              },
-              {
-                icon: currentTheme === 'theme-aperture' ? '●' : '○',
-                children: 'Aperture',
-                onClick: () => handleThemeChange('theme-aperture'),
-              },
-              {
-                icon: currentTheme === 'theme-westworld' ? '●' : '○',
-                children: 'Westworld',
-                onClick: () => handleThemeChange('theme-westworld'),
-              },
-
-              // Dark themes - spacer
-              {
-                icon: '',
-                children: '',
-                disabled: true,
-              },
-              {
-                icon: currentTheme === 'theme-dark' ? '●' : '○',
-                children: 'Midnight',
-                onClick: () => handleThemeChange('theme-dark'),
-              },
-              {
-                icon: currentTheme === 'theme-blue' ? '●' : '○',
-                children: 'BSOD',
-                onClick: () => handleThemeChange('theme-blue'),
-              },
-              {
-                icon: currentTheme === 'theme-green' ? '●' : '○',
-                children: 'Matrix',
-                onClick: () => handleThemeChange('theme-green'),
-              },
-
-              // Terminal/CRT themes - spacer
-              {
-                icon: '',
-                children: '',
-                disabled: true,
-              },
-
-              {
-                icon: currentTheme === 'theme-black-green' ? '●' : '○',
-                children: 'Phosphor',
-                onClick: () => handleThemeChange('theme-black-green'),
-              },
-              {
-                icon: currentTheme === 'theme-black-amber' || !currentTheme ? '●' : '○',
-                children: 'Sulfur',
-                onClick: () => handleThemeChange('theme-black-amber'),
-              },
-              {
-                icon: currentTheme === 'theme-black-red' ? '●' : '○',
-                children: 'Neon',
-                onClick: () => handleThemeChange('theme-black-red'),
-              },
-
-              // Sci-Fi themes
-              // System fonts - spacer
-              {
-                icon: '',
-                children: '',
-                disabled: true,
-              },
-              {
-                icon: currentTheme === 'theme-lcars' ? '●' : '○',
-                children: 'LCARS',
-                onClick: () => handleThemeChange('theme-lcars'),
-              },
-              {
-                icon: currentTheme === 'theme-hologram' ? '●' : '○',
-                children: 'Hologram',
-                onClick: () => handleThemeChange('theme-hologram'),
-              },
-              {
-                icon: currentTheme === 'theme-blade' ? '●' : '○',
-                children: '2049',
-                onClick: () => handleThemeChange('theme-blade'),
-              },
-              {
-                icon: currentTheme === 'theme-nostromo' ? '●' : '○',
-                children: 'Nostromo',
-                onClick: () => handleThemeChange('theme-nostromo'),
-              },
-              {
-                icon: currentTheme === 'theme-nerv' ? '●' : '○',
-                children: 'NERV',
-                onClick: () => handleThemeChange('theme-nerv'),
-              },
-              {
-                icon: currentTheme === 'theme-akira' ? '●' : '○',
-                children: 'Neo-Tokyo',
-                onClick: () => handleThemeChange('theme-akira'),
-              },
-
-              // Retro/Gaming themes - spacer
-              {
-                icon: '',
-                children: '',
-                disabled: true,
-              },
-              {
-                icon: currentTheme === 'theme-win95' ? '●' : '○',
-                children: 'Windows 95',
-                onClick: () => handleThemeChange('theme-win95'),
-              },
-              {
-                icon: currentTheme === 'theme-macos9' ? '●' : '○',
-                children: 'Mac OS 9',
-                onClick: () => handleThemeChange('theme-macos9'),
-              },
-              {
-                icon: currentTheme === 'theme-outrun' ? '●' : '○',
-                children: 'Outrun',
-                onClick: () => handleThemeChange('theme-outrun'),
-              },
-            ],
+            items: createThemeItems(currentTheme, handleThemeChange),
           },
           {
             hotkey: '⌃+G',
