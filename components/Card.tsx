@@ -1,14 +1,16 @@
 import styles from '@components/Card.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
+  className?: string;
   title?: string | any;
   mode?: string | any;
 }
 
-const Card: React.FC<CardProps> = ({ children, mode, title, style, ...rest }) => {
+const Card: React.FC<CardProps> = ({ children, className, mode, title, style, ...rest }) => {
   let titleElement = (
     <header className={styles.action}>
       <div className={styles.left} aria-hidden="true"></div>
@@ -38,7 +40,7 @@ const Card: React.FC<CardProps> = ({ children, mode, title, style, ...rest }) =>
   }
 
   return (
-    <article className={styles.card} style={style} {...rest}>
+    <article className={Utilities.classNames(styles.card, className)} style={style} {...rest}>
       {titleElement}
       <section className={styles.children}>{children}</section>
     </article>

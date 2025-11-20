@@ -6,6 +6,7 @@ import * as Utilities from '@common/utilities';
 
 export interface NavigationProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode;
+  className?: string;
   logoHref?: string;
   logoTarget?: React.HTMLAttributeAnchorTarget;
   onClickLogo?: React.MouseEventHandler<HTMLButtonElement>;
