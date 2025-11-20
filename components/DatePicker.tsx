@@ -1,9 +1,12 @@
 
-import styles from '@components/DatePicker.module.scss';
+import styles from '@components/DatePicker.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
-interface DatePickerProps {
+export interface DatePickerProps {
+  style?: React.CSSProperties;
+  className?: string;
   year?: number;
   month?: number;
 }
@@ -17,7 +20,7 @@ const MONTH_NAMES = [
 
 const MAX_CELLS = 42;
 
-const DatePicker: React.FC<DatePickerProps> = ({ year, month }) => {
+const DatePicker: React.FC<DatePickerProps> = ({ style, className, year, month }) => {
   const today = new Date();
   const [currentYear, setYear] = React.useState(year || today.getFullYear());
   const [currentMonth, setMonth] = React.useState(month || today.getMonth() + 1);
@@ -73,7 +76,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ year, month }) => {
   };
 
   return (
-    <div className={styles.root}>
+    <div className={Utilities.classNames(styles.root, className)} style={style}>
       <div className={styles.controls}>
         <button type="button" className={styles.button} onClick={onSwitchPreviousMonth} aria-label="Previous month">
           ▲

@@ -1,18 +1,20 @@
 
-import styles from '@components/Accordion.module.scss';
+import styles from '@components/Accordion.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import Row from '@components/Row';
 
-interface AccordionProps {
+export interface AccordionProps {
+  style?: React.CSSProperties;
+  className?: string;
   defaultValue?: boolean;
   title: string;
   children?: React.ReactNode;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ defaultValue = false, title, children }) => {
+const Accordion: React.FC<AccordionProps> = ({ style, className, defaultValue = false, title, children }) => {
   const [show, setShow] = React.useState<boolean>(defaultValue);
   const accordionRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -22,7 +24,7 @@ const Accordion: React.FC<AccordionProps> = ({ defaultValue = false, title, chil
 
   return (
     <>
-      <Row ref={accordionRef} tabIndex={0} role="button" onClick={toggleShow} aria-expanded={show}>
+      <Row ref={accordionRef} className={className} style={style} tabIndex={0} role="button" onClick={toggleShow} aria-expanded={show}>
         <div className={Utilities.classNames(styles.flex, show ? styles.active : undefined)}>
           <span className={styles.icon}>{show ? '▾' : '▸'}</span>
           <span className={styles.content}>{title}</span>

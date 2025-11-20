@@ -1,4 +1,4 @@
-import styles from '@components/page/DefaultActionBar.module.scss';
+import styles from '@components/page/DefaultActionBar.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
@@ -170,28 +170,33 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentFont === 'font-use-geist-mono' || !currentFont ? '●' : '○',
                 children: 'Geist Mono (Default)',
                 onClick: () => handleFontChange('font-use-geist-mono'),
+                className: 'font-use-geist-mono',
               },
 
               {
                 icon: currentFont === 'font-use-iosevka-term' ? '●' : '○',
                 children: 'Iosevka Term',
                 onClick: () => handleFontChange('font-use-iosevka-term'),
+                className: 'font-use-iosevka-term',
               },
               {
                 icon: currentFont === 'font-use-commit-mono' ? '●' : '○',
                 children: 'Commit Mono',
                 onClick: () => handleFontChange('font-use-commit-mono'),
+                className: 'font-use-commit-mono',
               },
               {
                 icon: currentFont === 'font-use-fira-code' ? '●' : '○',
                 children: 'Fira Code',
                 onClick: () => handleFontChange('font-use-fira-code'),
+                className: 'font-use-fira-code',
               },
 
               {
                 icon: currentFont === 'font-use-sfmono-square' ? '●' : '○',
                 children: 'SFMono Square',
                 onClick: () => handleFontChange('font-use-sfmono-square'),
+                className: 'font-use-sfmono-square',
               },
 
               // Monaspace Family
@@ -205,26 +210,31 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentFont === 'font-use-monaspace-neon' ? '●' : '○',
                 children: 'Neon',
                 onClick: () => handleFontChange('font-use-monaspace-neon'),
+                className: 'font-use-monaspace-neon',
               },
               {
                 icon: currentFont === 'font-use-monaspace-argon' ? '●' : '○',
                 children: 'Argon',
                 onClick: () => handleFontChange('font-use-monaspace-argon'),
+                className: 'font-use-monaspace-argon',
               },
               {
                 icon: currentFont === 'font-use-monaspace-krypton' ? '●' : '○',
                 children: 'Krypton',
                 onClick: () => handleFontChange('font-use-monaspace-krypton'),
+                className: 'font-use-monaspace-krypton',
               },
               {
                 icon: currentFont === 'font-use-monaspace-radon' ? '●' : '○',
                 children: 'Radon',
                 onClick: () => handleFontChange('font-use-monaspace-radon'),
+                className: 'font-use-monaspace-radon',
               },
               {
                 icon: currentFont === 'font-use-monaspace-xenon' ? '●' : '○',
                 children: 'Xenon',
                 onClick: () => handleFontChange('font-use-monaspace-xenon'),
+                className: 'font-use-monaspace-xenon',
               },
 
               // Google Fonts
@@ -237,36 +247,43 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentFont === 'font-use-anonymous-pro' ? '●' : '○',
                 children: 'Anonymous Pro',
                 onClick: () => handleFontChange('font-use-anonymous-pro'),
+                className: 'font-use-anonymous-pro',
               },
               {
                 icon: currentFont === 'font-use-share-tech-mono' ? '●' : '○',
                 children: 'Share Tech Mono',
                 onClick: () => handleFontChange('font-use-share-tech-mono'),
+                className: 'font-use-share-tech-mono',
               },
               {
                 icon: currentFont === 'font-use-space-mono' ? '●' : '○',
                 children: 'Space Mono',
                 onClick: () => handleFontChange('font-use-space-mono'),
+                className: 'font-use-space-mono',
               },
               {
                 icon: currentFont === 'font-use-vt323' ? '●' : '○',
                 children: 'VT323',
                 onClick: () => handleFontChange('font-use-vt323'),
+                className: 'font-use-vt323',
               },
               {
                 icon: currentFont === 'font-use-victor-mono' ? '●' : '○',
                 children: 'Victor Mono',
                 onClick: () => handleFontChange('font-use-victor-mono'),
+                className: 'font-use-victor-mono',
               },
               {
                 icon: currentFont === 'font-use-workbench' ? '●' : '○',
                 children: 'Workbench',
                 onClick: () => handleFontChange('font-use-workbench'),
+                className: 'font-use-workbench',
               },
               {
                 icon: currentFont === 'font-use-xanh-mono' ? '●' : '○',
                 children: 'Xanh Mono',
                 onClick: () => handleFontChange('font-use-xanh-mono'),
+                className: 'font-use-xanh-mono',
               },
 
               // Downloaded fonts - spacer
@@ -279,31 +296,37 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentFont === 'font-use-atkinson-hyperlegible-mono' ? '●' : '○',
                 children: 'Atkinson Hyperlegible Mono',
                 onClick: () => handleFontChange('font-use-atkinson-hyperlegible-mono'),
+                className: 'font-use-atkinson-hyperlegible-mono',
               },
               {
                 icon: currentFont === 'font-use-berkeley-mono' ? '●' : '○',
                 children: 'Berkeley Mono™',
                 onClick: () => handleFontChange('font-use-berkeley-mono'),
+                className: 'font-use-berkeley-mono',
               },
               {
                 icon: currentFont === 'font-use-julia-mono' ? '●' : '○',
                 children: 'JuliaMono',
                 onClick: () => handleFontChange('font-use-julia-mono'),
+                className: 'font-use-julia-mono',
               },
               {
                 icon: currentFont === 'font-use-tt2020' ? '●' : '○',
                 children: 'TT2020',
                 onClick: () => handleFontChange('font-use-tt2020'),
+                className: 'font-use-tt2020',
               },
               {
                 icon: currentFont === 'font-use-latin-modern-mono' ? '●' : '○',
                 children: 'Latin Modern Mono',
                 onClick: () => handleFontChange('font-use-latin-modern-mono'),
+                className: 'font-use-latin-modern-mono',
               },
               {
                 icon: currentFont === 'font-use-serious-shanns' ? '●' : '○',
                 children: 'Serious Shanns',
                 onClick: () => handleFontChange('font-use-serious-shanns'),
+                className: 'font-use-serious-shanns',
               },
             ],
           },

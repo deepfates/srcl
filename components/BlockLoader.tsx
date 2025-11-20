@@ -1,7 +1,8 @@
 
-import styles from '@components/BlockLoader.module.scss';
+import styles from '@components/BlockLoader.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 const SEQUENCES = [
   ['⠁', '⠂', '⠄', '⡀', '⢀', '⠠', '⠐', '⠈'],
@@ -17,11 +18,11 @@ const SEQUENCES = [
   ['◐', '◓', '◑', '◒'],
 ];
 
-interface BlockLoaderProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
+export interface BlockLoaderProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
   mode?: number;
 }
 
-const BlockLoader: React.FC<BlockLoaderProps> = ({ mode = 0 }) => {
+const BlockLoader: React.FC<BlockLoaderProps> = ({ style, className, mode = 0 }) => {
   if (!SEQUENCES[mode]) {
     return <span className={styles.block}>�</span>;
   }
@@ -46,7 +47,7 @@ const BlockLoader: React.FC<BlockLoaderProps> = ({ mode = 0 }) => {
     };
   }, [indexLength]);
 
-  return <span className={styles.root}>{SEQUENCES[mode][index]}</span>;
+  return <span className={Utilities.classNames(styles.root, className)} style={style}>{SEQUENCES[mode][index]}</span>;
 };
 
 export default BlockLoader;

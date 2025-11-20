@@ -38,10 +38,7 @@ export { default as Message } from '../components/Message';
 export { default as MessageViewer } from '../components/MessageViewer';
 export { default as ActionBar } from '../components/ActionBar';
 export { toggleDebugGrid } from '../components/DebugGrid';
-export {
-  onHandleFontChange,
-  onHandleThemeChange,
-} from '../common/utilities';
+export { onHandleFontChange, onHandleThemeChange } from '../common/utilities';
 
 /* Inputs and forms */
 export { default as Input } from '../components/Input';
@@ -64,7 +61,6 @@ export { default as DataTable } from '../components/DataTable';
 export { default as BarLoader } from '../components/BarLoader';
 export { default as BarProgress } from '../components/BarProgress';
 export { default as BlockLoader } from '../components/BlockLoader';
-export { default as MatrixLoader } from '../components/MatrixLoader';
 
 /* Overlays and popovers */
 export { default as Tooltip } from '../components/Tooltip';
@@ -81,11 +77,7 @@ export { default as HoverComponentTrigger } from '../components/HoverComponentTr
 export { default as CodeBlock } from '../components/CodeBlock';
 export { default as Accordion } from '../components/Accordion';
 export { default as DebugGrid } from '../components/DebugGrid';
-export { default as Dither } from '../components/dither';
+export { default as Dither } from '../components/Dither';
 
 /* Fun demos (optional for consumers) */
-export { default as CanvasPlatformer } from '../components/CanvasPlatformer';
-export { default as CanvasSnake } from '../components/CanvasSnake';
-export { default as DOMSnake } from '../components/DOMSnake';
-export { default as Chessboard } from '../components/Chessboard';
 export { default as TreeView } from '../components/TreeView';

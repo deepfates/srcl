@@ -1,10 +1,12 @@
 
-import styles from '@components/Select.module.scss';
+import styles from '@components/Select.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-interface SelectProps {
+export interface SelectProps {
+  style?: React.CSSProperties;
+  className?: string;
   name: string;
   options: string[];
   placeholder?: string;
@@ -12,7 +14,7 @@ interface SelectProps {
   onChange?: (selectedValue: string) => void;
 }
 
-const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValue = '', onChange }) => {
+const Select: React.FC<SelectProps> = ({ style, className, name, options, placeholder, defaultValue = '', onChange }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [index, setIndex] = React.useState(-1);
   const [selectedValue, setSelectedValue] = React.useState(defaultValue);
@@ -42,7 +44,7 @@ const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValu
 
   return (
     <>
-      <section className={styles.select}>
+      <section className={Utilities.classNames(styles.select, className)} style={style}>
         <figure
           className={Utilities.classNames(isOpen ? styles.focused : null, styles.control)}
           onClick={() => {

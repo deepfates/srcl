@@ -1,9 +1,9 @@
 
-import styles from '@components/Drawer.module.scss';
+import styles from '@components/Drawer.module.css';
 
 import * as React from 'react';
 
-interface DrawerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
+export interface DrawerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
   children?: React.ReactNode;
   defaultValue?: boolean;
 }

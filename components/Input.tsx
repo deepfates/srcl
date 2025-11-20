@@ -2,15 +2,17 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import styles from '@components/Input.module.scss';
+import styles from '@components/Input.module.css';
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   caretChars?: string | any;
   label?: string | any;
   isBlink?: boolean;
+  containerClassName?: string;
+  containerStyle?: React.CSSProperties;
 };
 
-function Input({ caretChars, isBlink = true, label, placeholder, onChange, type, id, ...rest }: InputProps) {
+function Input({ caretChars, isBlink = true, label, placeholder, onChange, type, id, containerClassName, containerStyle, ...rest }: InputProps) {
   const generatedId = React.useId();
   const inputId = id || generatedId;
 
@@ -81,7 +83,7 @@ function Input({ caretChars, isBlink = true, label, placeholder, onChange, type,
   };
 
   const isPlaceholderVisible = !text && placeholder;
-  const containerClasses = Utilities.classNames(styles.root, isFocused && styles.focused);
+  const containerClasses = Utilities.classNames(styles.root, isFocused && styles.focused, containerClassName);
 
   const maskText = (t: string) => (type === 'password' ? '•'.repeat(t.length) : t);
 
@@ -89,7 +91,7 @@ function Input({ caretChars, isBlink = true, label, placeholder, onChange, type,
   const afterCaretText = isPlaceholderVisible ? '' : maskText(text.substring(selectionStart));
 
   return (
-    <div className={containerClasses}>
+    <div className={containerClasses} style={containerStyle}>
       {label && (
         <label htmlFor={inputId} className={styles.label}>
           {label}

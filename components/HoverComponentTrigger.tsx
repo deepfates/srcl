@@ -1,5 +1,5 @@
 
-import styles from '@components/HoverComponentTrigger.module.scss';
+import styles from '@components/HoverComponentTrigger.module.css';
 
 import * as React from 'react';
 import * as Position from '@common/position';

@@ -1,14 +1,17 @@
-import styles from '@components/BarProgress.module.scss';
+import styles from '@components/BarProgress.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
-interface BarProgressProps {
+export interface BarProgressProps {
+  style?: React.CSSProperties;
+  className?: string;
   intervalRate?: number;
   progress?: number;
   fillChar?: string;
 }
 
-const BarProgress: React.FC<BarProgressProps> = ({ intervalRate, progress, fillChar = '░' }) => {
+const BarProgress: React.FC<BarProgressProps> = ({ style, className, intervalRate, progress, fillChar = '░' }) => {
   const [currentProgress, setCurrentProgress] = React.useState(progress ?? 0);
   const [containerWidth, setContainerWidth] = React.useState(0);
   const [charWidth, setCharWidth] = React.useState(0);
@@ -115,7 +118,7 @@ const BarProgress: React.FC<BarProgressProps> = ({ intervalRate, progress, fillC
   const barStr = fillChar.repeat(filledChars);
 
   return (
-    <div className={styles.root} ref={containerRef} aria-valuenow={cappedProgress} aria-valuemin={0} aria-valuemax={100} role="progressbar">
+    <div className={Utilities.classNames(styles.root, className)} style={style} ref={containerRef} aria-valuenow={cappedProgress} aria-valuemin={0} aria-valuemax={100} role="progressbar">
       <span ref={measureRef} className={styles.measure}>
         {fillChar}
       </span>

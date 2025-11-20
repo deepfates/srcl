@@ -1,14 +1,17 @@
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
-import styles from '@components/BarLoader.module.scss';
+import styles from '@components/BarLoader.module.css';
 
-interface BarLoaderProps {
+export interface BarLoaderProps {
+  style?: React.CSSProperties;
+  className?: string;
   intervalRate?: number;
   progress?: number;
 }
 
-const BarLoader: React.FC<BarLoaderProps> = ({ intervalRate, progress }) => {
+const BarLoader: React.FC<BarLoaderProps> = ({ style, className, intervalRate, progress }) => {
   const [currentProgress, setCurrentProgress] = React.useState<number>(progress || 0);
 
   React.useEffect(() => {
@@ -27,7 +30,7 @@ const BarLoader: React.FC<BarLoaderProps> = ({ intervalRate, progress }) => {
   }, [intervalRate, progress]);
 
   return (
-    <div className={styles.root}>
+    <div className={Utilities.classNames(styles.root, className)} style={style}>
       <div
         className={styles.bar}
         style={{

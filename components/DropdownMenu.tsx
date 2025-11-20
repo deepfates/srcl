@@ -1,5 +1,5 @@
 
-import styles from '@components/DropdownMenu.module.scss';
+import styles from '@components/DropdownMenu.module.css';
 
 import * as React from 'react';
 
@@ -9,18 +9,19 @@ import ModalTrigger from '@components/ModalTrigger';
 
 import { useHotkeys } from '@modules/hotkeys';
 
-interface DropdownMenuItemProps {
+export interface DropdownMenuItemProps {
   children: React.ReactNode;
   icon?: React.ReactNode;
   href?: string;
   target?: string;
+  className?: string;
   onClick?: () => void;
   modal?: any;
   modalProps?: Record<string, unknown>;
   disabled?: boolean;
 }
 
-interface DropdownMenuProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DropdownMenuProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: (event?: MouseEvent | TouchEvent | KeyboardEvent) => void;
   items?: DropdownMenuItemProps[];
 }
@@ -49,6 +50,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>((props,
           return (
             <ActionListItem
               key={`action-items-${index}`}
+              className={each.className}
               children={each.children}
               icon={each.icon}
               href={each.href}

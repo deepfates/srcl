@@ -2,13 +2,18 @@
 import * as React from 'react';
 
 import { ModalProvider } from '@components/page/ModalContext';
+import { HotkeysProvider } from '@modules/hotkeys';
 
-interface ProvidersProps {
+export interface ProvidersProps {
   children: React.ReactNode;
 }
 
 const Providers: React.FC<ProvidersProps> = ({ children }) => {
-  return <ModalProvider>{children}</ModalProvider>;
+  return (
+    <HotkeysProvider>
+      <ModalProvider>{children}</ModalProvider>
+    </HotkeysProvider>
+  );
 };
 
 export default Providers;

@@ -1,8 +1,8 @@
-import styles from '@components/Indent.module.scss';
+import styles from '@components/Indent.module.css';
 
 import * as React from 'react';
 
-interface IndentProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IndentProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 

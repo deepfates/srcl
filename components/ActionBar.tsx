@@ -1,4 +1,4 @@
-import styles from '@components/ActionBar.module.scss';
+import styles from '@components/ActionBar.module.css';
 
 import * as React from 'react';
 
@@ -9,11 +9,12 @@ interface ActionBarItem {
   onClick?: () => void;
   openHotkey?: string;
   selected?: boolean;
+  className?: string;
   body: React.ReactNode;
   items?: any;
 }
 
-interface ActionBarProps {
+export interface ActionBarProps {
   items: ActionBarItem[];
 }
 

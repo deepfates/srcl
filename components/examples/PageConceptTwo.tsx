@@ -1,5 +1,5 @@
 
-import styles from '@components/examples/PageConceptTwo.module.scss';
+import styles from '@components/examples/PageConceptTwo.module.css';
 
 import * as React from 'react';
 

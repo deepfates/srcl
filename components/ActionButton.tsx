@@ -1,25 +1,26 @@
-import styles from '@components/ActionButton.module.scss';
+import styles from '@components/ActionButton.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-interface ActionButtonProps {
+export interface ActionButtonProps {
   onClick?: () => void;
   hotkey?: any;
   children?: React.ReactNode;
   style?: any;
+  className?: string;
   rootStyle?: any;
   isSelected?: boolean;
 }
 
-const ActionButton = React.forwardRef<HTMLDivElement, ActionButtonProps>(({ onClick, hotkey, children, style, rootStyle, isSelected }, ref) => {
+const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(({ onClick, hotkey, children, style, rootStyle, isSelected, className }, ref) => {
   return (
-    <div className={Utilities.classNames(styles.root, isSelected ? styles.selected : null)} style={rootStyle} onClick={onClick} tabIndex={0} ref={ref} role="button">
+    <button className={Utilities.classNames(styles.root, isSelected ? styles.selected : null, className)} style={rootStyle} onClick={onClick} tabIndex={0} ref={ref} type="button">
       {Utilities.isEmpty(hotkey) ? null : <span className={styles.hotkey}>{hotkey}</span>}
       <span className={styles.content} style={style}>
         {children}
       </span>
-    </div>
+    </button>
   );
 });
 

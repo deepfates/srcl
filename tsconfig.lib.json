@@ -26,6 +26,7 @@
     "pages",
     "demos",
     "**/*.test.*",
-    "**/*.spec.*"
+    "**/*.spec.*",
+    "**/*.stories.*"
   ]
 }

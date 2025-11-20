@@ -1,19 +1,21 @@
-import styles from '@components/Dialog.module.scss';
+import styles from '@components/Dialog.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 import Block from '@components/Block';
 import Button from '@components/Button';
 
-interface DialogProps {
+export interface DialogProps {
   title?: React.ReactNode;
   children?: React.ReactNode;
   style?: React.CSSProperties;
+  className?: string;
   onConfirm?: () => void;
   onCancel?: () => void;
 }
 
-const Dialog: React.FC<DialogProps> = ({ title, children, style, onConfirm, onCancel }) => {
+const Dialog: React.FC<DialogProps> = ({ title, children, style, className, onConfirm, onCancel }) => {
   const titleId = React.useId();
   const descId = React.useId();
 
@@ -22,7 +24,7 @@ const Dialog: React.FC<DialogProps> = ({ title, children, style, onConfirm, onCa
 
   return (
     <div
-      className={styles.root}
+      className={Utilities.classNames(styles.root, className)}
       style={style}
       role="dialog"
       aria-modal="true"

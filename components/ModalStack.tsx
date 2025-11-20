@@ -1,11 +1,11 @@
 
-import styles from '@components/ModalStack.module.scss';
+import styles from '@components/ModalStack.module.css';
 
 import * as React from 'react';
 
 import { useModals } from '@components/page/ModalContext';
 
-interface ModalStackProps {}
+export interface ModalStackProps {}
 
 const ModalStack: React.FC<ModalStackProps> = () => {
   const { modalStack } = useModals();

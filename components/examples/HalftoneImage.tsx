@@ -1,5 +1,5 @@
 import React from 'react';
-import Dither from '@components/dither';
+import Dither from '@root/components/Dither';
 import type { RGBColor } from '@lib/dither';
 import getSafeImageSrc from '@lib/getSafeImageSrc';
 import useThemeTwoColor from '@lib/useThemeTwoColor';
