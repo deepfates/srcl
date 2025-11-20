@@ -3,9 +3,62 @@ import styles from '@components/page/DefaultActionBar.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import { toggleDebugGrid } from '@components/DebugGrid';
 import { useHotkeys } from '@modules/hotkeys';
 
 import ActionBar from '@components/ActionBar';
+import ButtonGroup from '@components/ButtonGroup';
+
+function isElement(target: EventTarget | null): target is Element {
+  return target instanceof Element;
+}
+
+function isHTMLElement(target: EventTarget | null): target is HTMLElement {
+  return target instanceof HTMLElement;
+}
+
+const findFocusableParent = (element: Element | null): Element | null => {
+  while (element) {
+    element = element.parentElement;
+    if (element && Utilities.isFocusableElement(element)) {
+      return element;
+    }
+  }
+  return null;
+};
+
+const findNextFocusableSibling = (element: Element, direction: 'next' | 'previous'): HTMLElement | null => {
+  let sibling = direction === 'next' ? element.nextElementSibling : element.previousElementSibling;
+
+  while (sibling) {
+    if (Utilities.isFocusableElement(sibling)) {
+      return sibling as HTMLElement;
+    }
+
+    const focusableDescendant = Utilities.findFocusableDescendant(sibling, null, direction);
+    if (focusableDescendant) {
+      return focusableDescendant;
+    }
+
+    sibling = direction === 'next' ? sibling.nextElementSibling : sibling.previousElementSibling;
+  }
+
+  return null;
+};
+
+const findNextFocusableAncestor = (element: Element, direction: 'next' | 'previous'): HTMLElement | null => {
+  let ancestor = element.parentElement;
+
+  while (ancestor) {
+    const nextFocusable = findNextFocusableSibling(ancestor, direction);
+    if (nextFocusable) {
+      return nextFocusable;
+    }
+    ancestor = ancestor.parentElement;
+  }
+
+  return null;
+};
 
 const useGlobalNavigationHotkeys = () => {
   const onHandleSubmit = (event: KeyboardEvent) => {
@@ -315,6 +368,8 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
     return () => observer.disconnect();
   }, []);
 
+  useHotkeys('ctrl+g', () => toggleDebugGrid());
+
   useGlobalNavigationHotkeys();
 
   const handleFontChange = (className: string) => {
@@ -342,6 +397,14 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             body: 'Theme',
             openHotkey: 'ctrl+t',
             items: createThemeItems(currentTheme, handleThemeChange),
+          },
+          {
+            hotkey: '⌃+G',
+            onClick: () => {
+              toggleDebugGrid();
+            },
+            body: 'Grid',
+            selected: false,
           },
           ...items,
         ]}
