@@ -19,10 +19,3 @@ export const Default: Story = {
     children: 'Card content goes here',
   },
 };
-
-export const WithLongContent: Story = {
-  args: {
-    title: 'Long Content Card',
-    children: 'This card has more content to display. It can handle multiple lines and longer text without any issues.',
-  },
-};

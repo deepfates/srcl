@@ -55,9 +55,3 @@ export const WithClickHandler: Story = {
     onClick: () => alert('Button clicked!'),
   },
 };
-
-export const LongText: Story = {
-  args: {
-    children: 'This is a button with longer text content',
-  },
-};

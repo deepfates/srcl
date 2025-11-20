@@ -24,9 +24,3 @@ export const Default: Story = {
     children: 'Tooltip text',
   },
 };
-
-export const LongText: Story = {
-  args: {
-    children: 'This is a longer tooltip with more detailed information',
-  },
-};

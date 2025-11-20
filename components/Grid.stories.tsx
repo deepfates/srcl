@@ -28,15 +28,3 @@ export const Default: Story = {
     </Grid>
   ),
 };
-
-export const ManyItems: Story = {
-  render: () => (
-    <Grid>
-      {Array.from({ length: 12 }, (_, i) => (
-        <div key={i} style={{ background: 'var(--theme-border)', padding: '1rem' }}>
-          Item {i + 1}
-        </div>
-      ))}
-    </Grid>
-  ),
-};

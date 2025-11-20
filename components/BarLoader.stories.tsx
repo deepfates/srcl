@@ -40,9 +40,3 @@ export const Static100: Story = {
     progress: 100,
   },
 };
-
-export const FastAnimation: Story = {
-  args: {
-    intervalRate: 50,
-  },
-};

@@ -24,27 +24,3 @@ export const Default: Story = {
     children: 'Example',
   },
 };
-
-export const Number: Story = {
-  args: {
-    children: '42',
-  },
-};
-
-export const Version: Story = {
-  args: {
-    children: 'v1.1.7',
-  },
-};
-
-export const Status: Story = {
-  args: {
-    children: 'NEW',
-  },
-};
-
-export const LongerText: Story = {
-  args: {
-    children: 'FEATURED',
-  },
-};

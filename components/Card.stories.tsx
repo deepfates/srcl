@@ -62,10 +62,3 @@ export const Nested: Story = {
     children: 'Content',
   },
 };
-
-export const ChristopherAlexander: Story = {
-  args: {
-    title: 'THE TIMELESS WAY',
-    children: 'The structure of life I have described in buildings - the structure which I believe to be objective - is deeply and inextricably connected with the human person, and with the innermost nature of human feeling.',
-  },
-};

@@ -61,7 +61,6 @@ export { default as DataTable } from '../components/DataTable';
 export { default as BarLoader } from '../components/BarLoader';
 export { default as BarProgress } from '../components/BarProgress';
 export { default as BlockLoader } from '../components/BlockLoader';
-export { default as MatrixLoader } from '../components/MatrixLoader';
 
 /* Overlays and popovers */
 export { default as Tooltip } from '../components/Tooltip';

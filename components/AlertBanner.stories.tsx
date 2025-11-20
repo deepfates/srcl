@@ -24,16 +24,3 @@ export const Default: Story = {
     children: 'This is an alert banner message',
   },
 };
-
-export const LongMessage: Story = {
-  args: {
-    children: 'This is a longer alert banner message that contains more detailed information for the user to read and understand.',
-  },
-};
-
-export const WithCustomStyle: Story = {
-  args: {
-    children: 'Styled alert',
-    style: { padding: '2rem' },
-  },
-};

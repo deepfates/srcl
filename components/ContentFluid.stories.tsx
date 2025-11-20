@@ -24,13 +24,3 @@ export const Default: Story = {
     children: 'This is fluid content that adapts to its container width',
   },
 };
-
-export const WithMultipleParagraphs: Story = {
-  render: () => (
-    <ContentFluid>
-      <p>First paragraph of fluid content.</p>
-      <p>Second paragraph of fluid content.</p>
-      <p>Third paragraph that will flow naturally.</p>
-    </ContentFluid>
-  ),
-};

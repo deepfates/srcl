@@ -5,7 +5,6 @@ import ModalStack from './ModalStack';
 import ModalAlert from './modals/ModalAlert';
 import ModalError from './modals/ModalError';
 import ModalCreateAccount from './modals/ModalCreateAccount';
-import ModalMatrixModes from './modals/ModalMatrixModes';
 
 const meta = {
   title: 'Components/Modals',
@@ -49,15 +48,6 @@ export const AllModals: Story = {
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
             <ModalTrigger modal={ModalCreateAccount}>
               <Button>Create Account Form</Button>
-            </ModalTrigger>
-          </div>
-        </section>
-
-        <section>
-          <h2>Special Modals</h2>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
-            <ModalTrigger modal={ModalMatrixModes}>
-              <Button>Matrix Loader Modes</Button>
             </ModalTrigger>
           </div>
         </section>

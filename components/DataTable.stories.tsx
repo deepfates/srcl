@@ -35,19 +35,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const AnimalStocks: Story = {
+export const Default: Story = {
   args: {
     data: SAMPLE_TABLE_DATA,
-  },
-};
-
-export const SmallDataset: Story = {
-  args: {
-    data: [
-      ['Name', 'Age', 'City'],
-      ['John', '30', 'New York'],
-      ['Jane', '25', 'Los Angeles'],
-      ['Bob', '35', 'Chicago'],
-    ],
   },
 };

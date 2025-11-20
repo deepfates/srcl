@@ -82,13 +82,3 @@ export const NoLabel: Story = {
     name: 'nolabel',
   },
 };
-
-export const MultipleInputs: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Input label="FIRST NAME" name="firstname" />
-      <Input label="LAST NAME" name="lastname" />
-      <Input label="EMAIL" type="email" name="email" />
-    </div>
-  ),
-};

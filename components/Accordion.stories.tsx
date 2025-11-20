@@ -43,14 +43,6 @@ export const Expanded: Story = {
   },
 };
 
-export const LongContent: Story = {
-  args: {
-    title: 'PHILOSOPHY',
-    defaultValue: true,
-    children: `There are two visions of America a half century from now. One is of a society more divided between the haves and the have-nots, a country in which the rich live in gated communities, send their children to expensive schools, and have access to first-rate medical care. Meanwhile, the rest live in a world marked by insecurity, at best mediocre education, and in effect rationed health care―they hope and pray they don't get seriously sick. At the bottom are millions of young people alienated and without hope.`,
-  },
-};
-
 export const MultipleAccordions: Story = {
   args: {
     title: 'SECTION ONE',

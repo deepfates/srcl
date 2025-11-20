@@ -86,9 +86,3 @@ export const WithLoader: Story = {
     children: 'Loading',
   },
 };
-
-export const Navigation: Story = {
-  args: {
-    children: 'NAVIGATION ITEM',
-  },
-};

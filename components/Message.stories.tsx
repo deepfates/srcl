@@ -41,9 +41,3 @@ export const Conversation: Story = {
     children: 'Message',
   },
 };
-
-export const ShortMessage: Story = {
-  args: {
-    children: 'Hi!',
-  },
-};

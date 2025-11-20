@@ -46,21 +46,3 @@ export const WithoutLabel: Story = {
     data: LANDSCAPES,
   },
 };
-
-const techData = [
-  ['Technology', 'Description'],
-  ['React', 'A JavaScript library for building user interfaces'],
-  ['TypeScript', 'JavaScript with syntax for types'],
-  ['Storybook', 'UI component explorer for frontend developers'],
-  ['Vite', 'Next generation frontend tooling'],
-  ['Node.js', 'JavaScript runtime built on Chrome V8 engine'],
-  ['CSS', 'Cascading Style Sheets for styling'],
-  ['HTML', 'HyperText Markup Language'],
-];
-
-export const Technologies: Story = {
-  args: {
-    data: techData,
-    label: 'Search technologies',
-  },
-};

@@ -24,13 +24,3 @@ export const Default: Story = {
     children: 'This is a row container',
   },
 };
-
-export const WithMultipleChildren: Story = {
-  render: () => (
-    <Row>
-      <span>Item 1</span>
-      <span>Item 2</span>
-      <span>Item 3</span>
-    </Row>
-  ),
-};

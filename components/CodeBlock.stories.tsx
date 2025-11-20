@@ -13,7 +13,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const CPPServer: Story = {
+export const Default: Story = {
   args: {
     children: `#include <iostream>
 #include <string>
@@ -50,22 +50,5 @@ int main() {
 
     return 0;
 }`,
-  },
-};
-
-export const JavaScript: Story = {
-  args: {
-    children: `function example() {
-  console.log("Hello");
-  return true;
-}
-
-const result = example();`,
-  },
-};
-
-export const SingleLine: Story = {
-  args: {
-    children: 'const hello = "world";',
   },
 };

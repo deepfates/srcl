@@ -33,26 +33,3 @@ export const FullWidth: Story = {
     ],
   },
 };
-
-export const Actions: Story = {
-  args: {
-    isFull: true,
-    items: [
-      { body: 'FAVORITE' },
-      { body: 'DONATE' },
-      { body: 'LEARN MORE' },
-    ],
-  },
-};
-
-export const ManyButtons: Story = {
-  args: {
-    items: [
-      { body: 'One' },
-      { body: 'Two' },
-      { body: 'Three' },
-      { body: 'Four' },
-      { body: 'Five' },
-    ],
-  },
-};

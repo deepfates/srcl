@@ -103,7 +103,7 @@ const preview: Preview = {
             fontFamily: 'var(--font-family-mono)',
             color: 'var(--theme-text)',
             padding: '2rem',
-            display: 'flex',
+            overflow: 'scroll',
             maxWidth: '100cqw',
             minWidth: '66cqw'
           }}
