@@ -1,16 +1,13 @@
 import styles from '@components/Block.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
-export interface BlockProps extends React.HTMLAttributes<HTMLSpanElement> {
-  children?: React.ReactNode;
-}
+export type BlockProps = Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'>
 
-const Block: React.FC<BlockProps> = ({ children, ...rest }) => {
+const Block: React.FC<BlockProps> = ({ className, ...rest }) => {
   return (
-    <span className={styles.block} {...rest}>
-      {children}
-    </span>
+    <span className={Utilities.classNames(styles.block, className)} {...rest}/>
   );
 };
 

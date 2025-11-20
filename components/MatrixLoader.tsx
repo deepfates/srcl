@@ -2,8 +2,11 @@
 import styles from '@components/MatrixLoader.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 export interface MatrixLoaderProps {
+  style?: React.CSSProperties;
+  className?: string;
   rows?: number;
   direction?: undefined | 'top-to-bottom' | 'left-to-right';
   mode?: undefined | 'greek' | 'katakana';
@@ -35,7 +38,7 @@ function onTextGeneration({ mode = 'greek' }) {
   return '0';
 }
 
-const MatrixLoader: React.FC<MatrixLoaderProps> = ({ rows = 25, direction = 'top-to-bottom', mode = 'greek' }) => {
+const MatrixLoader: React.FC<MatrixLoaderProps> = ({ style, className, rows = 25, direction = 'top-to-bottom', mode = 'greek' }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
   React.useEffect(() => {
@@ -158,7 +161,7 @@ const MatrixLoader: React.FC<MatrixLoaderProps> = ({ rows = 25, direction = 'top
   }, [rows, direction, mode]);
 
   return (
-    <div className={styles.container}>
+    <div className={Utilities.classNames(styles.container, className)} style={style}>
       <canvas className={styles.root} ref={canvasRef} />
     </div>
   );

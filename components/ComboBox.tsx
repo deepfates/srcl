@@ -2,6 +2,7 @@
 import styles from '@components/ComboBox.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 import AlertBanner from '@components/AlertBanner';
 import ButtonGroup from '@components/ButtonGroup';
@@ -9,11 +10,13 @@ import CardDouble from '@components/CardDouble';
 import Input from '@components/Input';
 
 interface ComboBoxProps {
+  style?: React.CSSProperties;
+  className?: string;
   data: string[][];
   label?: string;
 }
 
-function ComboBox({ data, label }: ComboBoxProps) {
+function ComboBox({ style, className, data, label }: ComboBoxProps) {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const filtered = React.useMemo(() => {
@@ -40,7 +43,7 @@ function ComboBox({ data, label }: ComboBoxProps) {
 
   return (
     <>
-      <div className={styles.root}>
+      <div className={Utilities.classNames(styles.root, className)} style={style}>
         <Input autoComplete="off" isBlink label={label} name="input_test_blink" value={searchTerm} onChange={handleChange} />
       </div>
       {displayed.map((entry) => (

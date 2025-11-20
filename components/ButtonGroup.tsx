@@ -1,17 +1,25 @@
 import styles from '@components/ButtonGroup.module.css';
 
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import ActionButton from '@components/ActionButton';
 import DropdownMenuTrigger from '@components/DropdownMenuTrigger';
 
-const ButtonGroup = (props) => {
+export interface ButtonGroupProps {
+  style?: React.CSSProperties;
+  className?: string;
+  isFull?: boolean;
+  items?: any[];
+}
+
+const ButtonGroup: React.FC<ButtonGroupProps> = (props) => {
   if (!props.items) {
     return null;
   }
 
   return (
-    <div className={Utilities.classNames(styles.root, props.isFull ? styles.full : null)}>
+    <div className={Utilities.classNames(styles.root, props.isFull ? styles.full : null, props.className)} style={props.style}>
       {props.items.map((each) => {
         if (each.items) {
           console.log('each', each)

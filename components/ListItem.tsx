@@ -4,7 +4,13 @@ import styles from '@components/ListItem.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-const ListItem = ({ children }) => {
+export interface ListItemProps {
+  style?: React.CSSProperties;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const ListItem: React.FC<ListItemProps> = ({ style, className, children }) => {
   const itemRef = React.useRef<HTMLLIElement>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
@@ -33,7 +39,7 @@ const ListItem = ({ children }) => {
   };
 
   return (
-    <li className={styles.root} tabIndex={0} ref={itemRef} onKeyDown={handleKeyDown}>
+    <li className={Utilities.classNames(styles.root, className)} style={style} tabIndex={0} ref={itemRef} onKeyDown={handleKeyDown}>
       {children}
     </li>
   );

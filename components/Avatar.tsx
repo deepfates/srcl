@@ -6,11 +6,12 @@ import * as Utilities from '@common/utilities';
 import type { RGBColor } from '@lib/dither';
 import getSafeImageSrc from '@lib/getSafeImageSrc';
 
-export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
+export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
   src?: string;
   href?: string;
   target?: string;
   style?: React.CSSProperties;
+  className?: string;
   children?: React.ReactNode;
   alt?: string;
 }
@@ -25,7 +26,7 @@ export interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
  * - Uses Dither in twoColor mode only (no CRT animation).
  */
 const Avatar: React.FC<AvatarProps> = (props) => {
-  const { src, alt, style: propStyle, href, target, children, ...rest } = props;
+  const { src, alt, style: propStyle, className, href, target, children, ...rest } = props;
 
   // Palette is [paper, baseInk] = [theme-background, theme-text]
   const [palette, setPalette] = React.useState<RGBColor[] | undefined>();
@@ -136,13 +137,13 @@ const Avatar: React.FC<AvatarProps> = (props) => {
 
     if (href) {
       avatarElement = (
-        <a className={Utilities.classNames(styles.root, styles.link)} href={href} target={target} tabIndex={0} role="link" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)} onFocus={() => setActive(true)} onBlur={() => setActive(false)}>
+        <a className={Utilities.classNames(styles.root, styles.link, className)} style={propStyle} href={href} target={target} tabIndex={0} role="link" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)} onFocus={() => setActive(true)} onBlur={() => setActive(false)}>
           {ditherElement}
         </a>
       );
     } else {
       avatarElement = (
-        <figure className={styles.root} onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)} onFocus={() => setActive(true)} onBlur={() => setActive(false)} style={propStyle}>
+        <figure className={Utilities.classNames(styles.root, className)} onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)} onFocus={() => setActive(true)} onBlur={() => setActive(false)} style={propStyle}>
           {ditherElement}
         </figure>
       );
@@ -150,9 +151,9 @@ const Avatar: React.FC<AvatarProps> = (props) => {
   } else {
     // Placeholder while palette not yet computed or no src provided
     if (href) {
-      avatarElement = <a className={styles.placeholder} style={propStyle} href={href} target={target} tabIndex={0} role="link" />;
+      avatarElement = <a className={Utilities.classNames(styles.placeholder, className)} style={propStyle} href={href} target={target} tabIndex={0} role="link" />;
     } else {
-      avatarElement = <figure className={styles.placeholder} style={propStyle} />;
+      avatarElement = <figure className={Utilities.classNames(styles.placeholder, className)} style={propStyle} />;
     }
   }
 

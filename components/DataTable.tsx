@@ -2,8 +2,11 @@
 import styles from '@components/DataTable.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 export interface TableProps {
+  style?: React.CSSProperties;
+  className?: string;
   data: string[][];
 }
 
@@ -27,7 +30,7 @@ function interpolateColor(color1: RGBAColor, color2: RGBAColor, factor: number):
   };
 }
 
-const DataTable: React.FC<TableProps> = ({ data }) => {
+const DataTable: React.FC<TableProps> = ({ style, className, data }) => {
   const tableRef = React.useRef<HTMLTableElement>(null);
   const prevDataRef = React.useRef<string[][]>(data);
 
@@ -84,7 +87,7 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
   const targetColorData: RGBAColor = { r: 255, g: 255, b: 255, a: ALPHA };
 
   return (
-    <table className={styles.root} ref={tableRef} onKeyDown={handleKeyDown}>
+    <table className={Utilities.classNames(styles.root, className)} style={style} ref={tableRef} onKeyDown={handleKeyDown}>
       <tbody className={styles.body}>
         {data.map((row, rowIndex) => (
           <tr key={rowIndex} className={styles.row} tabIndex={0} onClick={() => alert('testing')}>

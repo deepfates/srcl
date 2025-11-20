@@ -5,6 +5,7 @@ import * as Utilities from '@common/utilities';
 
 export interface RadioButtonProps {
   style?: React.CSSProperties;
+  className?: string;
   name: string;
   value: string;
   selected?: boolean;
@@ -12,7 +13,7 @@ export interface RadioButtonProps {
   children?: React.ReactNode;
 }
 
-const RadioButton: React.FC<RadioButtonProps> = ({ style, name, value, selected = false, onSelect, children }) => {
+const RadioButton: React.FC<RadioButtonProps> = ({ style, className, name, value, selected = false, onSelect, children }) => {
   const radioId = `${name}-${value}-radio`;
   const [isFocused, setIsFocused] = React.useState(false);
 
@@ -50,7 +51,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({ style, name, value, selected 
       className={Utilities.classNames(styles.section, {
         [styles.focused]: isFocused,
         [styles.selected]: selected,
-      })}
+      }, className)}
       style={style}
     >
       <input className={styles.input} id={radioId} type="radio" name={name} value={value} checked={selected} onFocus={handleFocus} onBlur={handleBlur} onKeyDown={handleKeyDown} onChange={handleChange} />

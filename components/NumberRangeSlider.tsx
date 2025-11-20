@@ -2,15 +2,18 @@
 import styles from '@components/NumberRangeSlider.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 export interface RangerProps {
+  style?: React.CSSProperties;
+  className?: string;
   defaultValue?: number;
   max?: number;
   min?: number;
   step?: number;
 }
 
-const NumberRangeSlider: React.FC<RangerProps> = ({ defaultValue = 0, max = 5000, min = 0, step = 1 }) => {
+const NumberRangeSlider: React.FC<RangerProps> = ({ style, className, defaultValue = 0, max = 5000, min = 0, step = 1 }) => {
   const sliderRef = React.useRef<HTMLInputElement>(null);
   const [displayValue, setDisplayValue] = React.useState<number>(defaultValue);
 
@@ -33,7 +36,7 @@ const NumberRangeSlider: React.FC<RangerProps> = ({ defaultValue = 0, max = 5000
   };
 
   return (
-    <div className={styles.root}>
+    <div className={Utilities.classNames(styles.root, className)} style={style}>
       <label className={styles.left}>
         <div className={styles.amount}>{padValue(displayValue)}</div>
       </label>

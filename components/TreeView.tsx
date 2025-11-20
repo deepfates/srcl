@@ -2,6 +2,7 @@
 import styles from '@components/TreeView.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 export interface TreeViewProps {
   children?: React.ReactNode;
@@ -12,10 +13,11 @@ export interface TreeViewProps {
   isRoot?: boolean;
   parentLines?: boolean[];
   style?: any;
+  className?: string;
   title: string;
 }
 
-const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, children, depth = 0, isFile = false, isRoot = false, isLastChild = false, style, parentLines = [] }) => {
+const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, children, depth = 0, isFile = false, isRoot = false, isLastChild = false, style, className, parentLines = [] }) => {
   const [show, setShow] = React.useState<boolean>(defaultValue);
 
   const onToggleShow = (): void => {
@@ -33,7 +35,7 @@ const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, childr
   const updatedParentLines = [...parentLines, !isLastChild];
 
   return (
-    <div className={styles.root} style={style}>
+    <div className={Utilities.classNames(styles.root, className)} style={style}>
       <div tabIndex={0} role="button" onClick={onToggleShow} className={styles.item} aria-expanded={show}>
         {prefix}
         {icon}

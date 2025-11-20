@@ -5,6 +5,7 @@ import * as Utilities from '@common/utilities';
 
 export interface CheckboxProps {
   style?: React.CSSProperties;
+  className?: string;
   checkboxStyle?: React.CSSProperties;
   name: string;
   defaultChecked?: boolean;
@@ -13,7 +14,7 @@ export interface CheckboxProps {
   children?: React.ReactNode;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ style, name, defaultChecked = false, onChange, children }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ style, className, name, defaultChecked = false, onChange, children }) => {
   const checkboxId = `${name}-checkbox`;
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -61,7 +62,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ style, name, defaultChecked = false
       className={Utilities.classNames(styles.section, {
         [styles.checked]: isChecked,
         [styles.focused]: isFocused,
-      })}
+      }, className)}
       style={style}
     >
       <div className={styles.relative}>

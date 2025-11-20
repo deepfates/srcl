@@ -8,29 +8,22 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    children: {
-      control: 'text',
-      description: 'Content to display inline',
-    },
-  },
 } satisfies Meta<typeof Block>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    children: 'Inline block content',
-  },
+
 };
 
 export const MultipleBlocks: Story = {
   render: () => (
-    <>
-      <Block>First block</Block>
-      <Block>Second block</Block>
-      <Block>Third block</Block>
-    </>
+    <div style={{ display: 'flex', flexDirection: 'column'}}>
+      <div><Block/>First block</div>
+      <div>Second block<Block/>
+      </div>
+      <div>Third <Block/>block</div>
+    </div>
   ),
 };

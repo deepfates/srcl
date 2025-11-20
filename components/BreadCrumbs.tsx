@@ -1,6 +1,7 @@
 import styles from '@components/BreadCrumbs.module.css';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 interface BreadCrumbsItem {
   url?: string;
@@ -8,12 +9,14 @@ interface BreadCrumbsItem {
 }
 
 export interface BreadCrumbsProps {
+  style?: React.CSSProperties;
+  className?: string;
   items: BreadCrumbsItem[];
 }
 
-const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ items }) => {
+const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ style, className, items }) => {
   return (
-    <nav aria-label="breadcrumb" className={styles.root}>
+    <nav aria-label="breadcrumb" className={Utilities.classNames(styles.root, className)} style={style}>
       {items.map((item, index) => {
         const linkElement = (
           <a className={styles.link} href={item.url} target="_blank" tabIndex={0} role="link">

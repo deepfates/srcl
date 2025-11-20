@@ -8,8 +8,10 @@ type TextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
   autoPlay?: string;
   autoPlaySpeedMS?: number;
   isBlink?: boolean;
+  containerClassName?: string;
+  containerStyle?: React.CSSProperties;
 };
-function TextArea({ autoPlay, autoPlaySpeedMS = 40, isBlink, placeholder, onChange, ...rest }: TextAreaProps) {
+function TextArea({ autoPlay, autoPlaySpeedMS = 40, isBlink, placeholder, onChange, containerClassName, containerStyle, ...rest }: TextAreaProps) {
   const textAreaRef = React.useRef<HTMLTextAreaElement | null>(null);
   const measurementRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -159,10 +161,10 @@ function TextArea({ autoPlay, autoPlaySpeedMS = 40, isBlink, placeholder, onChan
 
   const isPlaceholderVisible = !text && placeholder;
 
-  const containerClasses = Utilities.classNames(styles.root, isFocused && styles.focused);
+  const containerClasses = Utilities.classNames(styles.root, isFocused && styles.focused, containerClassName);
 
   return (
-    <div className={containerClasses}>
+    <div className={containerClasses} style={containerStyle}>
       <div className={Utilities.classNames(styles.displayed, isPlaceholderVisible && styles.placeholder)}>
         {isPlaceholderVisible ? placeholder : text.substring(0, selectionStart)}
         {!isPlaceholderVisible && <span className={Utilities.classNames(styles.block, isBlink && styles.blink)}></span>}
