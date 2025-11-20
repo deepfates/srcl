@@ -3,62 +3,9 @@ import styles from '@components/page/DefaultActionBar.module.css';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import { toggleDebugGrid } from '@components/DebugGrid';
 import { useHotkeys } from '@modules/hotkeys';
 
 import ActionBar from '@components/ActionBar';
-import ButtonGroup from '@components/ButtonGroup';
-
-function isElement(target: EventTarget | null): target is Element {
-  return target instanceof Element;
-}
-
-function isHTMLElement(target: EventTarget | null): target is HTMLElement {
-  return target instanceof HTMLElement;
-}
-
-const findFocusableParent = (element: Element | null): Element | null => {
-  while (element) {
-    element = element.parentElement;
-    if (element && Utilities.isFocusableElement(element)) {
-      return element;
-    }
-  }
-  return null;
-};
-
-const findNextFocusableSibling = (element: Element, direction: 'next' | 'previous'): HTMLElement | null => {
-  let sibling = direction === 'next' ? element.nextElementSibling : element.previousElementSibling;
-
-  while (sibling) {
-    if (Utilities.isFocusableElement(sibling)) {
-      return sibling as HTMLElement;
-    }
-
-    const focusableDescendant = Utilities.findFocusableDescendant(sibling, null, direction);
-    if (focusableDescendant) {
-      return focusableDescendant;
-    }
-
-    sibling = direction === 'next' ? sibling.nextElementSibling : sibling.previousElementSibling;
-  }
-
-  return null;
-};
-
-const findNextFocusableAncestor = (element: Element, direction: 'next' | 'previous'): HTMLElement | null => {
-  let ancestor = element.parentElement;
-
-  while (ancestor) {
-    const nextFocusable = findNextFocusableSibling(ancestor, direction);
-    if (nextFocusable) {
-      return nextFocusable;
-    }
-    ancestor = ancestor.parentElement;
-  }
-
-  return null;
-};
 
 const useGlobalNavigationHotkeys = () => {
   const onHandleSubmit = (event: KeyboardEvent) => {
@@ -144,10 +91,10 @@ const FONT_CATEGORIES: FontConfig[][] = [
   ],
   // Hand
   [
+    { name: 'Anonymous Pro', className: 'font-use-anonymous-pro' },
     { name: 'Radon', className: 'font-use-monaspace-radon' },
     { name: 'Serious Shanns', className: 'font-use-serious-shanns' },
     { name: 'Victor Mono', className: 'font-use-victor-mono' },
-    { name: 'Anonymous Pro', className: 'font-use-anonymous-pro' },
   ],
   // Type
   [
@@ -157,8 +104,8 @@ const FONT_CATEGORIES: FontConfig[][] = [
   ],
   // Serif
   [
-    { name: 'Xenon', className: 'font-use-monaspace-xenon' },
     { name: 'Xanh Mono', className: 'font-use-xanh-mono' },
+    { name: 'Xenon', className: 'font-use-monaspace-xenon' },
   ],
 ];
 
@@ -173,44 +120,44 @@ const THEME_CATEGORIES: { label?: string; themes: ThemeConfig[] }[] = [
   {
     label: 'Light themes',
     themes: [
-      { name: 'Highlight', className: 'theme-light' },
       { name: 'Aperture', className: 'theme-aperture' },
+      { name: 'Highlight', className: 'theme-light' },
       { name: 'Westworld', className: 'theme-westworld' }
     ]
   },
   {
     label: 'Dark themes',
     themes: [
-      { name: 'Midnight', className: 'theme-dark' },
       { name: 'BSOD', className: 'theme-blue' },
+      { name: 'Midnight', className: 'theme-dark' },
       { name: 'Matrix', className: 'theme-green' }
     ]
   },
   {
     label: 'Terminal/CRT themes',
     themes: [
+      { name: 'Neon', className: 'theme-black-red' },
       { name: 'Phosphor', className: 'theme-black-green' },
-      { name: 'Sulfur', className: 'theme-black-amber', isDefault: true },
-      { name: 'Neon', className: 'theme-black-red' }
+      { name: 'Sulfur', className: 'theme-black-amber' },
     ]
   },
   {
     label: 'Sci-Fi themes',
     themes: [
-      { name: 'LCARS', className: 'theme-lcars' },
-      { name: 'Hologram', className: 'theme-hologram' },
       { name: '2049', className: 'theme-blade' },
-      { name: 'Nostromo', className: 'theme-nostromo' },
+      { name: 'Hologram', className: 'theme-hologram' },
+      { name: 'LCARS', className: 'theme-lcars' },
       { name: 'NERV', className: 'theme-nerv' },
-      { name: 'Neo-Tokyo', className: 'theme-akira' }
+      { name: 'Neo-Tokyo', className: 'theme-akira' },
+      { name: 'Nostromo', className: 'theme-nostromo' }
     ]
   },
   {
     label: 'Retro/Gaming themes',
     themes: [
-      { name: 'Windows 95', className: 'theme-win95' },
       { name: 'Mac OS 9', className: 'theme-macos9' },
-      { name: 'Outrun', className: 'theme-outrun' }
+      { name: 'Outrun', className: 'theme-outrun' },
+      { name: 'Windows 95', className: 'theme-win95' },
     ]
   }
 ];
@@ -368,8 +315,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
     return () => observer.disconnect();
   }, []);
 
-  useHotkeys('ctrl+g', () => toggleDebugGrid());
-
   useGlobalNavigationHotkeys();
 
   const handleFontChange = (className: string) => {
@@ -397,14 +342,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             body: 'Theme',
             openHotkey: 'ctrl+t',
             items: createThemeItems(currentTheme, handleThemeChange),
-          },
-          {
-            hotkey: '⌃+G',
-            onClick: () => {
-              toggleDebugGrid();
-            },
-            body: 'Grid',
-            selected: false,
           },
           ...items,
         ]}
