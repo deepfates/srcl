@@ -32,7 +32,7 @@ function getContrastRatio(color1, color2) {
 }
 
 // Read the global.scss file
-const scss = fs.readFileSync('global.scss', 'utf8');
+const scss = fs.readFileSync('global.css', 'utf8');
 
 // Extract theme definitions
 const themeRegex = /body\.theme-([a-z0-9-]+)\s*{([^}]+)}/g;
