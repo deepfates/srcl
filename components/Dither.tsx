@@ -1,7 +1,7 @@
 
 import { ditherCanvas, type RGBColor } from '@lib/dither';
 import getSafeImageSrc from '@lib/getSafeImageSrc';
-import { cn } from '@lib/utils';
+import * as Utilities from '@common/utilities';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export interface DitherProps {
@@ -151,7 +151,7 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
     renderCurrent();
   }, [loaded, renderCurrent]);
 
-  return <canvas ref={canvasRef} aria-label={alt} role="img" className={cn('max-w-full', className)} style={style} />;
+  return <canvas ref={canvasRef} aria-label={alt} role="img" className={Utilities.classNames('max-w-full', className)} style={style} />;
 };
 
 export default Dither;
