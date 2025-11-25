@@ -1,7 +1,3 @@
-import React from 'react';
-
-import '@root/global.css';
-
 import * as Constants from '@common/constants';
 
 import DefaultLayout from '@components/page/DefaultLayout';

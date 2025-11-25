@@ -81,7 +81,7 @@
       "types": "./dist/modules/hotkeys/*.d.ts",
       "import": "./dist/modules/hotkeys/*.js"
     },
-    "./global.css": "./dist/src/global.css"
+    "./global.css": "./dist/assets/src/global.css"
   },
   "typesVersions": {
     "*": {
@@ -112,7 +112,6 @@
   ],
   "files": [
     "dist",
-    "src/styles",
-    "src/assets/fonts"
+    "src/styles"
   ]
 }
