@@ -15,7 +15,7 @@
     "build:app": "tsc && vite build",
     "build:storybook": "storybook build -o dist/storybook",
     "build:server": "tsc -p tsconfig.server.json",
-    "build:lib": "tsc -p tsconfig.lib.json && tsc-alias -p tsconfig.lib.json && vite build -c vite.lib.config.ts",
+    "build:lib": "vite build -c vite.lib.config.ts && tsc -p tsconfig.lib.json && tsc-alias -p tsconfig.lib.json",
     "prepare": "npm run build:lib",
     "prepublishOnly": "npm run build:lib",
     "start": "NODE_ENV=production node dist/server/index.js",
