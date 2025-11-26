@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
 import Providers from '../components/Providers';
-import '../global.css';
+import '../src/global.css';
 
 const preview: Preview = {
   parameters: {
@@ -105,7 +105,7 @@ const preview: Preview = {
             padding: '2rem',
             overflow: 'scroll',
             maxWidth: '100cqw',
-            minWidth: '66cqw'
+            minWidth: '66cqw',
           }}
         >
           <Providers>
