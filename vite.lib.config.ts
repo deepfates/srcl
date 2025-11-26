@@ -129,8 +129,8 @@ export default defineConfig({
     lib: {
       // Single entry to expose the root export (.)
       entry: {
-        index: path.resolve(__dirname, 'src/index.ts'),
-        global: path.resolve(__dirname, 'src/global.ts'),
+        'src/index': path.resolve(__dirname, 'src/index.ts'),
+        'src/global': path.resolve(__dirname, 'src/global.ts'),
         'modules/hotkeys/index': path.resolve(__dirname, 'modules/hotkeys/index.ts'),
       },
       // Only ESM for optimal tree-shaking in consumers
