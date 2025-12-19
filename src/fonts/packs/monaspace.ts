@@ -1,0 +1,2 @@
+import './monaspace.css';
+export {};

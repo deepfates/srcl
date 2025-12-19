@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'AtkinsonHyperlegibleMono-Regular';
+  src: url('../assets/fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AtkinsonHyperlegibleMono-Italic';
+  src: url('../assets/fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-Italic-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}

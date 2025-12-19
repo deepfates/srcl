@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'MonaspaceNeon-Regular';
+  src: url('../assets/fonts/monaspace/MonaspaceNeon-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaspaceArgon-Regular';
+  src: url('../assets/fonts/monaspace/MonaspaceArgon-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaspaceKrypton-Regular';
+  src: url('../assets/fonts/monaspace/MonaspaceKrypton-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaspaceRadon-Regular';
+  src: url('../assets/fonts/monaspace/MonaspaceRadon-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaspaceXenon-Regular';
+  src: url('../assets/fonts/monaspace/MonaspaceXenon-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

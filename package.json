@@ -17,12 +17,13 @@
     "build:server": "tsc -p tsconfig.server.json",
     "build:lib": "tsc -p tsconfig.lib.json && tsc-alias -p tsconfig.lib.json && vite build -c vite.lib.config.ts",
     "prepare": "npm run build:lib",
-    "prepublishOnly": "npm run build:lib",
+    "prepublishOnly": "npm run build:lib && npm run check:font-size",
     "start": "NODE_ENV=production node dist/server/index.js",
     "preview": "vite preview --port 10000",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "check:font-size": "node scripts/check-font-size.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -81,7 +82,16 @@
       "types": "./dist/modules/hotkeys/*.d.ts",
       "import": "./dist/modules/hotkeys/*.js"
     },
-    "./global.css": "./dist/src/global.css"
+    "./global.css": "./dist/src/global.css",
+    "./global-fonts.css": "./dist/src/global-fonts.css",
+    "./global-fonts": {
+      "types": "./dist/src/global-fonts.d.ts",
+      "import": "./dist/src/global-fonts.js"
+    },
+    "./fonts/packs/*": {
+      "types": "./dist/src/fonts/packs/*.d.ts",
+      "import": "./dist/src/fonts/packs/*.js"
+    }
   },
   "typesVersions": {
     "*": {
@@ -112,7 +122,6 @@
   ],
   "files": [
     "dist",
-    "src/styles",
-    "src/assets/fonts"
+    "src/styles"
   ]
 }

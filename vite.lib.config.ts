@@ -3,6 +3,26 @@ import react from '@vitejs/plugin-react';
 import fs from 'fs/promises';
 import path from 'path';
 
+const fontPackEntries = [
+  'monaspace',
+  'geist-mono',
+  'commit-mono',
+  'departure-mono',
+  'fira-code',
+  'fragment-mono',
+  'iosevka-term',
+  'jetbrains-mono',
+  'server-mono',
+  'sfmono-square',
+  'tx02mono',
+  'atkinson-hyperlegible-mono',
+  'julia-mono',
+  'tt2020',
+  'latin-modern-mono',
+  'serious-shanns',
+  'google-mono',
+];
+
 const fontExtensions = new Set(['.woff', '.woff2', '.ttf', '.otf', '.eot']);
 
 async function injectCssImports(outputDir: string) {
@@ -53,39 +73,17 @@ async function injectCssImports(outputDir: string) {
   await walk(modulesDir);
 }
 
-async function copyFontsRecursive(sourceDir: string, targetDir: string) {
-  const entries = await fs.readdir(sourceDir, { withFileTypes: true });
-  await fs.mkdir(targetDir, { recursive: true });
-
-  for (const entry of entries) {
-    const sourcePath = path.join(sourceDir, entry.name);
-    const targetPath = path.join(targetDir, entry.name);
-
-    if (entry.isDirectory()) {
-      await copyFontsRecursive(sourcePath, targetPath);
-    } else if (fontExtensions.has(path.extname(entry.name).toLowerCase())) {
-      await fs.copyFile(sourcePath, targetPath);
-    }
-  }
-}
-
-const copyFontAssetsPlugin = () => ({
-  name: 'copy-font-assets',
+const finalizeCssImportsPlugin = () => ({
+  name: 'finalize-css-imports',
   async closeBundle() {
-    const sourceDir = path.resolve(__dirname, 'src/assets/fonts');
-    const targetDir = path.resolve(__dirname, 'dist/assets/fonts');
-
-    try {
-      await copyFontsRecursive(sourceDir, targetDir);
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
-        throw error;
-      }
-    }
-
     await injectCssImports(path.resolve(__dirname, 'dist'));
   },
 });
+
+const fontPackEntryMap = fontPackEntries.reduce<Record<string, string>>((acc, pack) => {
+  acc[`fonts/packs/${pack}`] = path.resolve(__dirname, `src/fonts/packs/${pack}.ts`);
+  return acc;
+}, {});
 
 /**
  * Vite library build for SRCL (Pattern B: subpath exports with preserved modules)
@@ -103,7 +101,7 @@ const copyFontAssetsPlugin = () => ({
  * - Rollup will output relative imports between emitted files. Declarations should be emitted separately via tsc.
  */
 export default defineConfig({
-  plugins: [react(), copyFontAssetsPlugin()],
+  plugins: [react(), finalizeCssImportsPlugin()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -131,7 +129,9 @@ export default defineConfig({
       entry: {
         index: path.resolve(__dirname, 'src/index.ts'),
         global: path.resolve(__dirname, 'src/global.ts'),
+        'global-fonts': path.resolve(__dirname, 'src/global-fonts.ts'),
         'modules/hotkeys/index': path.resolve(__dirname, 'modules/hotkeys/index.ts'),
+        ...fontPackEntryMap,
       },
       // Only ESM for optimal tree-shaking in consumers
       formats: ['es'],
@@ -153,11 +153,16 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           const name = assetInfo.name || '';
 
-          if (name === 'global.css') {
+          if (name === 'global.css' || name === 'global-fonts.css') {
             return 'src/[name][extname]';
           }
 
           const parsed = path.parse(name);
+
+          if (fontExtensions.has(parsed.ext)) {
+            return `assets/fonts/${parsed.name}${parsed.ext}`;
+          }
+
           const isModuleCss = parsed.ext === '.css' && parsed.name.endsWith('.module');
           const dir = parsed.dir ? `${parsed.dir}/` : '';
           const baseName = isModuleCss ? parsed.name.replace(/\.module$/, '') : parsed.name;

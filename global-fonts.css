@@ -1,0 +1,22 @@
+/* Optional bundled font faces for SRCL.
+ * Import this sheet when you want the packaged font binaries alongside the base theme styles.
+ * Individual packs can be imported from `srcl/fonts/packs/<name>.css` for a slimmer payload.
+ */
+
+@import './src/fonts/packs/monaspace.css';
+@import './src/fonts/packs/geist-mono.css';
+@import './src/fonts/packs/commit-mono.css';
+@import './src/fonts/packs/departure-mono.css';
+@import './src/fonts/packs/fira-code.css';
+@import './src/fonts/packs/fragment-mono.css';
+@import './src/fonts/packs/iosevka-term.css';
+@import './src/fonts/packs/jetbrains-mono.css';
+@import './src/fonts/packs/server-mono.css';
+@import './src/fonts/packs/sfmono-square.css';
+@import './src/fonts/packs/tx02mono.css';
+@import './src/fonts/packs/atkinson-hyperlegible-mono.css';
+@import './src/fonts/packs/julia-mono.css';
+@import './src/fonts/packs/tt2020.css';
+@import './src/fonts/packs/latin-modern-mono.css';
+@import './src/fonts/packs/serious-shanns.css';
+@import './src/fonts/packs/google-mono.css';
