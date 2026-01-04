@@ -38,6 +38,10 @@
 - The app shell and Storybook load `global-fonts.css` explicitly to preserve the current look while keeping the base library font-optional.
 - Raw font binaries are no longer listed in the published `files` array; a publish-time size check prevents regressing past a 150 MB font payload.
 
+### Testing
+- `npm run test:fonts` rebuilds the library and verifies that `global.css` stays font-free, all font packs emit bundled CSS (with inlined or emitted font URLs), and that font rules remain present across packs.
+- `npm test` maps to the same check so CI or publishers can depend on it.
+
 ### Trade-offs
 - Splitting fonts into packs adds a few more import choices for consumers but significantly shrinks the default package footprint.
 - Dropping older formats may slightly reduce legacy browser support; we can gate that behind a separate "legacy" pack if needed.
