@@ -1,8 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const distFontsDir = path.resolve('dist/assets/fonts');
-const FONT_LIMIT_BYTES = 150 * 1024 * 1024; // 150 MB
+const distDir = path.resolve('dist');
+const PACKAGE_LIMIT_BYTES = 75 * 1024 * 1024;
 
 async function getDirectorySize(target) {
   let total = 0;
@@ -31,20 +31,19 @@ async function getDirectorySize(target) {
 }
 
 async function main() {
-  const size = await getDirectorySize(distFontsDir);
+  const size = await getDirectorySize(distDir);
 
   if (size === 0) {
-    console.warn(`[font-check] No fonts found under ${distFontsDir}; skipping size check.`);
-    return;
+    throw new Error(`No package build found under ${distDir}; run npm run build:lib first.`);
   }
 
-  if (size > FONT_LIMIT_BYTES) {
+  if (size > PACKAGE_LIMIT_BYTES) {
     const mb = (size / (1024 * 1024)).toFixed(2);
-    throw new Error(`dist/assets font payload is ${mb} MB, which exceeds the ${FONT_LIMIT_BYTES / (1024 * 1024)} MB limit.`);
+    throw new Error(`Built package is ${mb} MB, which exceeds the ${PACKAGE_LIMIT_BYTES / (1024 * 1024)} MB limit.`);
   }
 
   const mb = (size / (1024 * 1024)).toFixed(2);
-  console.log(`[font-check] dist/assets font payload: ${mb} MB (limit: ${FONT_LIMIT_BYTES / (1024 * 1024)} MB).`);
+  console.log(`[package-size] dist: ${mb} MB (limit: ${PACKAGE_LIMIT_BYTES / (1024 * 1024)} MB).`);
 }
 
 main().catch((error) => {

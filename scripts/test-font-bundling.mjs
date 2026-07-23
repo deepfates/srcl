@@ -119,10 +119,24 @@ async function main() {
     if (/url\(/i.test(contents)) {
       fontUrlCount += 1;
     }
+    if (/url\((?!["']?data:)/i.test(contents)) {
+      throw new Error(`Pack CSS contains an unresolved font URL: ${packPath}`);
+    }
   }
 
   if (fontUrlCount === 0) {
     throw new Error('Expected at least one font url within emitted packs.');
+  }
+
+  const packageJson = JSON.parse(await readFile(path.join(rootDir, 'package.json'), 'utf8'));
+  if (packageJson.exports['./global-fonts.css'] !== './dist/src/global-fonts.css') {
+    throw new Error('global-fonts.css must export the emitted full font sheet.');
+  }
+  if (packageJson.exports['./fonts/packs/*.css'] !== './dist/assets/src/fonts/packs/*.css') {
+    throw new Error('Font-pack CSS subpaths must export the emitted pack stylesheets.');
+  }
+  if (packageJson.exports['./global-fonts'] || packageJson.exports['./fonts/packs/*']) {
+    throw new Error('Do not export JavaScript font entries: Vite extracts their CSS and leaves empty modules.');
   }
 
   console.log(`[font-test] Verified font packs (${fontUrlCount}/${packNames.length}) emit font URLs.`);

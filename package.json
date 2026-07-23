@@ -86,14 +86,7 @@
     },
     "./global.css": "./dist/src/global.css",
     "./global-fonts.css": "./dist/src/global-fonts.css",
-    "./global-fonts": {
-      "types": "./dist/src/global-fonts.d.ts",
-      "import": "./dist/src/global-fonts.js"
-    },
-    "./fonts/packs/*": {
-      "types": "./dist/src/fonts/packs/*.d.ts",
-      "import": "./dist/src/fonts/packs/*.js"
-    }
+    "./fonts/packs/*.css": "./dist/assets/src/fonts/packs/*.css"
   },
   "typesVersions": {
     "*": {

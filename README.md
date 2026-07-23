@@ -1,7 +1,9 @@
 # SRCL
 
-- Global styles: import 'srcl/global.css' once in your app (recommended).
-- Fonts are self-hosted and bundled via the CSS pipeline; no extra configuration is needed.
+- Base styles: import `srcl/global.css` once in your app. This entry is font-free.
+- For every bundled font, also import `srcl/global-fonts.css`.
+- For a smaller payload, import only the families you use, such as
+  `srcl/fonts/packs/geist-mono.css` or `srcl/fonts/packs/monaspace.css`.
 
 ## Using SRCL via subpath exports
 
@@ -16,14 +18,16 @@ Examples:
 - import Badge from 'srcl/components/Badge'
 
 Global styles:
-- Import once in your app entry: `import 'srcl/global.css'` (build output with fonts baked in)
+- Import once in your app entry: `import 'srcl/global.css'`.
+- Add either `import 'srcl/global-fonts.css'` or individual
+  `srcl/fonts/packs/<family>.css` imports when you want bundled fonts.
 
 Notes:
 - Tree-shaking: Subpath imports ensure you only bundle what you use.
 - Types: TypeScript declaration files are provided for components and common utilities; editors should auto-complete props.
 - Peer dependencies: React and React DOM are expected to be provided by the consuming app.
 - Styles: Components use CSS modules with native CSS nesting. Most modern Vite-based projects work out of the box.
-- Fonts: The library build copies fonts into `dist/assets/fonts` and includes them in the compiled global.css automatically.
+- Fonts: Font binaries are emitted into the optional CSS entries. The base stylesheet does not make applications download them.
 
 Troubleshooting:
 - If your bundler cannot resolve imports like 'srcl/components/Button', ensure that your installed SRCL version exposes subpath exports and your bundler supports them (Node resolution with "exports" field).
